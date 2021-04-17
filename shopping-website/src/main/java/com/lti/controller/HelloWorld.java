@@ -8,6 +8,7 @@ public class HelloWorld {
 	@GetMapping("/hello")
 	public String helloWorld() {
 		System.out.println("Hiii Jeshma");
+		System.out.println("Hii Muskaan");
 		return "from shopping project";
 	}
 }
