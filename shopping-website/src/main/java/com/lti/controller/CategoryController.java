@@ -43,8 +43,8 @@ public class CategoryController {
 		}
 	}
 	
-	@GetMapping("/getAllCategory")
-	public List<Category> getAllCustomer(){
+	@GetMapping("/getcategory")
+	public List<Category> getAllCategory(){
 		List<Category> list = categoryService.getAllCategory();
 		return list;
 	}
