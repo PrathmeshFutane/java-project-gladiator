@@ -7,7 +7,8 @@ public class CustomerRepository extends GenericRepository {
 
 	public boolean isCustomerPresent(String email) {
 		return (Long) 
-				entityManager.createQuery("select count(c.id) from Customer c where c.name =: email")
+				entityManager
+				.createQuery("select count(c.id) from Customer c where c.email =: email")
 				.setParameter("email", email)
 				.getSingleResult() == 1 ? true : false;		
 	}

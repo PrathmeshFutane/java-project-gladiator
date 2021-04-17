@@ -21,6 +21,14 @@ public class ProductService {
 		Product updatedProduct = (Product) productRepository.save(product);
 			//code to send email to the customer on successful registration will be here
 		return updatedProduct.getProductId();
-		}
 	}
+	
+	public void updateImage(int productId, String newFileName) {
+		Product product = productRepository.fetch(Product.class, productId);
+		product.setImage(newFileName);
+		productRepository.save(product);
+	}
+}
+
+
 
