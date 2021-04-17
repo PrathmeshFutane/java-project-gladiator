@@ -9,6 +9,5 @@ public class HelloWorld {
 	public String helloWorld() {
 		System.out.println("Hiii Jeshma");
 		return "from shopping project";
-		
 	}
 }
