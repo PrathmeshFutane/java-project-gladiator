@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "shopping_customer")
 public class Customer {
 
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "customer_id")
