@@ -46,7 +46,7 @@ public class CustomerController {
 			LoginStatus loginStatus = new LoginStatus();
 			loginStatus.setStatus(true);
 			loginStatus.setMessage("Login successful!");
-			loginStatus.setCustomerId(customer.getCustomerId());
+			loginStatus.setId(customer.getCustomerId());
 			loginStatus.setName(customer.getName());
 			return loginStatus;
 		}

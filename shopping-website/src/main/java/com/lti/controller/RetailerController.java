@@ -50,7 +50,7 @@ public class RetailerController {
 			LoginStatus loginStatus = new LoginStatus();
 			loginStatus.setStatus(true);
 			loginStatus.setMessage("Login successful!");
-			loginStatus.setCustomerId(retailer.getRetailerId());
+			loginStatus.setId(retailer.getRetailerId());
 			loginStatus.setName(retailer.getOwnerName());
 			return loginStatus;
 		}
