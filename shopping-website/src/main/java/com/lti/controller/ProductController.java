@@ -1,4 +1,4 @@
-package com.lti.controller;
+	package com.lti.controller;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -52,14 +52,14 @@ public class ProductController {
 	}
 	
 	
-	@PostMapping("/addImage")
+	@PostMapping("/uploadimage")
 	public ImageStatus upload(ProductImage productImage) {
 		ImageStatus istatus = new ImageStatus();
-		int retailerId = productImage.getRetailerId();
+		int productId = productImage.getProductId();
 		
 		String imgUploadLocation = "d:/uploads/";
 		String uploadedFileName = productImage.getProductImg().getOriginalFilename();
-		String newFileName = retailerId + "-" + uploadedFileName;
+		String newFileName = productId + "-" + uploadedFileName;
 		String targetFileName = imgUploadLocation + newFileName;
 		
 		try {
@@ -71,7 +71,7 @@ public class ProductController {
 			istatus.setMessage("Profilepic upload failed!");
 		}
 		
-		productService.updateImage(retailerId, newFileName);
+		productService.updateImage(productId, newFileName);
 		
 		istatus.setStatus(true);
 		istatus.setMessage("Profilepic uploaded successfully!");

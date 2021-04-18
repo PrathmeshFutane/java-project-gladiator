@@ -2,15 +2,16 @@ package com.lti.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductImage {
-	private int retailerId;
+	
+	private int productId;
 	private MultipartFile productImg;
 
 	
-	public int getRetailerId() {
-		return retailerId;
+	public int getProductId() {
+		return productId;
 	}
-	public void setRetailerId(int retailerId) {
-		this.retailerId = retailerId;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	public MultipartFile getProductImg() {
 		return productImg;
