@@ -1,10 +1,14 @@
 package com.lti.entity;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +30,9 @@ public class Customer {
 	private long mobileNumber;
 	
 	private char accountStatus;
+	
+	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+	private List<Cart> carts;
 
 	public int getCustomerId() {
 		return customerId;
@@ -91,6 +98,16 @@ public class Customer {
 	public void setAccountStatus(char accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+
+	public List<Cart> getCarts() {
+		return carts;
+	}
+
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
+
+
 	
 	
 }

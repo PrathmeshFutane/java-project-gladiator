@@ -22,7 +22,7 @@ public class Category {
 	private String name;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private List<Product> product;
+	private List<Product> products;
 
 
 	public int getCategoryId() {
@@ -41,13 +41,14 @@ public class Category {
 		this.name = name;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
+
 	
 	
 	

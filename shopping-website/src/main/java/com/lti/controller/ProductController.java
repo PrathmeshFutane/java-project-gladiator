@@ -40,7 +40,7 @@ public class ProductController {
 			ProductStatus status = new ProductStatus();
 			status.setStatus(true);
 			status.setMessage("Product Added successful!");
-			status.setRegisteredProductId(id);;
+			status.setRegisteredProductId(id);
 			return status;
 		}
 		catch(ProductServiceException e) {

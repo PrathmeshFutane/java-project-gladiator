@@ -1,11 +1,15 @@
 package com.lti.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +33,9 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "retailer_id")
 	private Retailer retailer;
+	
+	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+	private List<CartItem> cartItems;
 
 	public int getProductId() {
 		return productId;
@@ -46,7 +53,6 @@ public class Product {
 		this.productName = productName;
 	}
 
-	
 
 	public String getProductDescription() {
 		return productDescription;
@@ -95,6 +101,16 @@ public class Product {
 	public void setRetailer(Retailer retailer) {
 		this.retailer = retailer;
 	}
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	
 	
 	
 }
