@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "shopping_category")
 public class Category {
@@ -22,6 +24,7 @@ public class Category {
 	private String name;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Product> product;
 
 
