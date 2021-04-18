@@ -18,7 +18,11 @@ public class CategoryRepository extends GenericRepository{
 	}
 	
 	
-	public List<Category> fetchCategory(){
-		return entityManager.createQuery("select c from Category c").getResultList();
+	
+	public List<Category> fetch() {
+		List<Category> list = entityManager.createQuery("select c from Category c").getResultList();
+		return list;
 	}
+	
 }
+	

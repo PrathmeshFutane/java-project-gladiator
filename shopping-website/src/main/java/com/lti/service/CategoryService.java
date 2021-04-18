@@ -29,8 +29,9 @@ public class CategoryService {
 		}
 	}
 	
-	
-	public List<Category> getAllCategory(){
-		return categoryRepository.fetchCategory();
+	public List<Category> get(){
+		return categoryRepository.fetch();
 	}
+	
+	
 }
