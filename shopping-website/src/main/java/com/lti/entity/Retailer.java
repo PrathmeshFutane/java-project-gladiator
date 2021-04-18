@@ -28,17 +28,20 @@ public class Retailer {
 	private char retailerStatus;
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
-	private List<Product> product;
+	private List<Product> products;
 	
 	public char getRetailerStatus() {
 		return retailerStatus;
 	}
-	public List<Product> getProduct() {
-		return product;
+	
+	public List<Product> getProducts() {
+		return products;
 	}
-	public void setProduct(List<Product> product) {
-		this.product = product;
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
+
 	public void setRetailerStatus(char retailerStatus) {
 		this.retailerStatus = retailerStatus;
 	}

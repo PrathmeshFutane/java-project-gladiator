@@ -1,10 +1,16 @@
 package com.lti.entity;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +32,16 @@ public class Customer {
 	private long mobileNumber;
 	
 	private char accountStatus;
+	
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
+	
+//	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+//	private List<Cart> carts;
+	
+//	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+//	private List<Order> orders;
 
 	public int getCustomerId() {
 		return customerId;
@@ -91,6 +107,26 @@ public class Customer {
 	public void setAccountStatus(char accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+//	public List<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<Order> orders) {
+//		this.orders = orders;
+//	}
+
+	
+
+
 	
 	
 }

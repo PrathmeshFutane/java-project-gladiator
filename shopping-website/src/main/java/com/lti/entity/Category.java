@@ -27,7 +27,6 @@ public class Category {
 	@JsonIgnore
 	private List<Product> product;
 
-
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -51,6 +50,9 @@ public class Category {
 	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
+
+	
+
 	
 	
 	
