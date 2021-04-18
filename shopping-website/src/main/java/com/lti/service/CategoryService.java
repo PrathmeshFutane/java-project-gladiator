@@ -13,14 +13,14 @@ import com.lti.repository.CategoryRepository;
 
 @Service
 @Transactional
-public class CategoryService {
+public class CategoryService{
 
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
 	public int register(Category category) {
 		if(categoryRepository.isCategoryPresent(category.getName()))
-			throw new CategoryServiceException("Category already registered!");
+			throw new CategoryServiceException("Category already exist!");
 		else {
 			//category.setPassword(Base64.getEncoder().encodeToString(retailer.getPassword().getBytes()));
 			Category updatedCategory = (Category) categoryRepository.save(category);

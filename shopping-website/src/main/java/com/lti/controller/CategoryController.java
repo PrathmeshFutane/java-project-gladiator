@@ -25,8 +25,6 @@ public class CategoryController {
 	@PostMapping("/category")
 	public CategoryStatus register(@RequestBody Category category) {
 		try {
-			//int otp = customer.getOtp();
-			//int genOtp = session.getAttribute("otp");
 			
 			int id = categoryService.register(category);
 			CategoryStatus status = new CategoryStatus();
@@ -44,12 +42,8 @@ public class CategoryController {
 	}
 	
 
-	@GetMapping("getcategory")
+	@GetMapping("/getcategory")
 	public List<Category> category(){
-		for(Category c : categoryService.get())
-			System.out.println(c.getCategoryId()+" "+c.getName());
 		return categoryService.get();
-
-
 	}
 }
