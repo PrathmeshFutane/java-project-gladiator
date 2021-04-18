@@ -43,12 +43,13 @@ public class CategoryController {
 		}
 	}
 	
+
 	@GetMapping("getcategory")
 	public List<Category> category(){
 		for(Category c : categoryService.get())
 			System.out.println(c.getCategoryId()+" "+c.getName());
 		return categoryService.get();
-	}
 
-	
+
+	}
 }
