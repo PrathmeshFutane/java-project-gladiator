@@ -19,7 +19,7 @@ public class CartController {
 	private CartService cartService;
 	
 	@PostMapping("/cart")
-	public CartStatus register(@RequestBody Cart cart) {
+	public CartStatus addToCart(@RequestBody Cart cart) {
 		try {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");

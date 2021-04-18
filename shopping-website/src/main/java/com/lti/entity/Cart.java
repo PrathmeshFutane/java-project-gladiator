@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,11 @@ public class Cart {
 	@Column(name = "cart_id")
 	private int cartId;
 	
-	@ManyToOne
+//	@ManyToOne
+//	@JoinColumn(name = "customer_id")
+//	private Customer customer;
+	
+	@OneToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
@@ -51,6 +56,8 @@ public class Cart {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	
 	
 	
 	
