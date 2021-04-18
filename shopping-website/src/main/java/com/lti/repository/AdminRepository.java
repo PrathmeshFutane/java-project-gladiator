@@ -1,5 +1,10 @@
 package com.lti.repository;
 
-public class AdminRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class AdminRepository extends GenericRepository{
+	
+	
 
 }
