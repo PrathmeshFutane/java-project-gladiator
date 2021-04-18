@@ -15,7 +15,7 @@ import com.lti.repository.CustomerRepository;
 //@Component
 @Service
 @Transactional  //for dml operations
-public class CustomerService {
+public class CustomerService implements CustomerServiceInterface{
 	
 	@Autowired
 	private CustomerRepository customerRepository;

@@ -14,19 +14,20 @@ import com.lti.dto.RegisterStatus;
 import com.lti.entity.Category;
 import com.lti.exception.CategoryServiceException;
 import com.lti.service.CategoryService;
+import com.lti.service.CategoryServiceInterface;
 
 @RestController
 @CrossOrigin
 public class CategoryController {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private CategoryServiceInterface categoryServiceInterface;
 	
-	@PostMapping("/category")
-	public CategoryStatus register(@RequestBody Category category) {
+	@PostMapping("/add-category")
+	public CategoryStatus addCategory(@RequestBody Category category) {
 		try {
 			
-			int id = categoryService.register(category);
+			int id = categoryServiceInterface.addCategory(category);
 			CategoryStatus status = new CategoryStatus();
 			status.setStatus(true);
 			status.setMessage("Category Added successful!");
@@ -42,8 +43,8 @@ public class CategoryController {
 	}
 	
 
-	@GetMapping("/getcategory")
-	public List<Category> category(){
-		return categoryService.get();
+	@GetMapping("/get-category")
+	public List<Category> getCategory(){
+		return categoryServiceInterface.fetchCategory();
 	}
 }

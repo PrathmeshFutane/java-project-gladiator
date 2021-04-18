@@ -29,8 +29,11 @@ public class Customer {
 	private String password;
 	private String address1;
 	private String address2;
+	
+	@Column(name = "mobile_number")
 	private long mobileNumber;
 	
+	@Column(name = "account_status")
 	private char accountStatus;
 	
 	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)

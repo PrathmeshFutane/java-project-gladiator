@@ -13,12 +13,12 @@ import com.lti.repository.CategoryRepository;
 
 @Service
 @Transactional
-public class CategoryService{
+public class CategoryService implements CategoryServiceInterface{
 
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public int register(Category category) {
+	public int addCategory(Category category) {
 		if(categoryRepository.isCategoryPresent(category.getName()))
 			throw new CategoryServiceException("Category already exist!");
 		else {
@@ -29,7 +29,7 @@ public class CategoryService{
 		}
 	}
 	
-	public List<Category> get(){
+	public List<Category> fetchCategory(){
 		return categoryRepository.fetch();
 	}
 	

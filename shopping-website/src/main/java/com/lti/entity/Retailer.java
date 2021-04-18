@@ -19,12 +19,17 @@ public class Retailer {
 	@Column(name = "retailer_id")
 	private int retailerId;
 	
+	@Column(name = "owner_name")
 	private String ownerName;
 	private String company;
 	private String email;
 	private String password;
+	
+	@Column(name = "mobile_number")
 	private long mobileNumber;
 	private int revenue;
+	
+	@Column(name = "retailer_status")
 	private char retailerStatus;
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)

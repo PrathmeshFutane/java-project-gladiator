@@ -20,6 +20,7 @@ import com.lti.exception.CategoryServiceException;
 import com.lti.exception.ProductServiceException;
 import com.lti.service.CategoryService;
 import com.lti.service.ProductService;
+import com.lti.service.ProductServiceInterface;
 
 import ch.qos.logback.core.status.Status;
 
@@ -28,15 +29,15 @@ import ch.qos.logback.core.status.Status;
 public class ProductController {
 
 	@Autowired
-	private ProductService productService;
+	private ProductServiceInterface productServiceInterface;
 	
-	@PostMapping("/product")
-	public ProductStatus register(@RequestBody Product product) {
+	@PostMapping("/add-product")
+	public ProductStatus addProduct(@RequestBody Product product) {
 		try {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");
 			
-			int id = productService.register(product);
+			int id = productServiceInterface.addProduct(product);
 			ProductStatus status = new ProductStatus();
 			status.setStatus(true);
 			status.setMessage("Product Added successful!");
@@ -52,8 +53,8 @@ public class ProductController {
 	}
 	
 	
-	@PostMapping("/uploadimage")
-	public ImageStatus upload(ProductImage productImage) {
+	@PostMapping("/upload-image")
+	public ImageStatus uploadImage(ProductImage productImage) {
 		ImageStatus istatus = new ImageStatus();
 		int productId = productImage.getProductId();
 		
@@ -71,7 +72,7 @@ public class ProductController {
 			istatus.setMessage("Profilepic upload failed!");
 		}
 		
-		productService.updateImage(productId, newFileName);
+		productServiceInterface.updateImage(productId, newFileName);
 		
 		istatus.setStatus(true);
 		istatus.setMessage("Profilepic uploaded successfully!");

@@ -12,23 +12,23 @@ import com.lti.dto.RetailerRegisterStatus;
 import com.lti.entity.Retailer;
 
 import com.lti.exception.RetailerServiceException;
-import com.lti.service.RetailerService;
+import com.lti.service.RetailerServiceInterface;
 
 @RestController
 @CrossOrigin
 public class RetailerController {
 	
 	@Autowired
-	private RetailerService retailerService;
+	private RetailerServiceInterface retailerServiceInterface;
 
 	
-	@PostMapping("/retailer")
-	public RetailerRegisterStatus register(@RequestBody Retailer retailer) {
+	@PostMapping("/register-retailer")
+	public RetailerRegisterStatus registerRetailer(@RequestBody Retailer retailer) {
 		try {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");
 			
-			int id = retailerService.register(retailer);
+			int id = retailerServiceInterface.register(retailer);
 			RetailerRegisterStatus status = new RetailerRegisterStatus();
 			status.setStatus(true);
 			status.setMessage("Registration successful!");
@@ -43,10 +43,10 @@ public class RetailerController {
 		}
 	}
 	
-	@PostMapping("/retailerlogin")
-	public LoginStatus login(@RequestBody Login login) {
+	@PostMapping("/login-retailer")
+	public LoginStatus loginRetailer(@RequestBody Login login) {
 		try {
-			Retailer retailer = retailerService.login(login.getEmail(), login.getPassword());
+			Retailer retailer = retailerServiceInterface.login(login.getEmail(), login.getPassword());
 			LoginStatus loginStatus = new LoginStatus();
 			loginStatus.setStatus(true);
 			loginStatus.setMessage("Login successful!");

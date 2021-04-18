@@ -21,8 +21,14 @@ public class Order {
 	@GeneratedValue
 	@Column(name = "order_id")
 	private int orderId;
+	
+	@Column(name = "order_date")
 	private LocalDate orderDate;
+	
+	@Column(name = "shipping_date")
 	private LocalDate shippingDate;
+	
+	@Column(name = "order_status")
 	private char orderStatus;
 	
 	@ManyToOne

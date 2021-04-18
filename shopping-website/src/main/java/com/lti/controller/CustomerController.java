@@ -9,30 +9,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RegisterStatus;
-import com.lti.entity.Cart;
 import com.lti.entity.Customer;
 import com.lti.exception.CustomerServiceException;
-import com.lti.service.CartService;
-import com.lti.service.CustomerService;
+import com.lti.service.CustomerServiceInterface;
 
 @RestController
 @CrossOrigin
 public class CustomerController {
 	
 	@Autowired
-	private CustomerService customerService;
+	private CustomerServiceInterface customerServiceInterface;
 	
 //	@Autowired
 //	private CartService cartService;
 	
-	@Autowired
-	private CartController cartController;
+//	@Autowired
+//	private CartController cartController;
 	
 	
 	@PostMapping("/register")
-	public RegisterStatus register(@RequestBody Customer customer) {
+	public RegisterStatus registerCustomer(@RequestBody Customer customer) {
 		try {
-			int id = customerService.register(customer);
+			int id = customerServiceInterface.register(customer);
 //			Cart cart = new Cart();
 //			cart.setCustomer(customer);
 //			int cid = cartService.register(cart);
@@ -55,9 +53,9 @@ public class CustomerController {
 	
 	
 	@PostMapping("/login")
-	public LoginStatus login(@RequestBody Login login) {
+	public LoginStatus loginCustomer(@RequestBody Login login) {
 		try {
-			Customer customer = customerService.login(login.getEmail(), login.getPassword());
+			Customer customer = customerServiceInterface.login(login.getEmail(), login.getPassword());
 			LoginStatus loginStatus = new LoginStatus();
 			loginStatus.setStatus(true);
 			loginStatus.setMessage("Login successful!");

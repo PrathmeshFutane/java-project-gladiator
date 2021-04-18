@@ -15,6 +15,7 @@ public class OrderItem {
 	
 	private int quantity;
 		
+	@Column(name = "total_price")
 	private int totalPrice;
 	 
 	@ManyToOne

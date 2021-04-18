@@ -20,9 +20,16 @@ public class Product {
 	@GeneratedValue
 	@Column(name = "product_id")
 	private int productId;
+	
+	@Column(name = "product_name")
 	private String productName;
+	
+	@Column(name = "product_description")
 	private String productDescription;
+	
 	private int stock;
+	
+	@Column(name = "unit_price")
 	private int unitPrice;
 	private String image;
 	

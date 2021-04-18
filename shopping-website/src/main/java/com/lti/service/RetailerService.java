@@ -17,7 +17,7 @@ import com.lti.repository.RetailerRepository;
 
 @Service
 @Transactional
-public class RetailerService {
+public class RetailerService implements RetailerServiceInterface {
 
 	@Autowired
 	private RetailerRepository retailerRepository;

@@ -9,13 +9,13 @@ import com.lti.repository.ProductRepository;
 
 @Service
 @Transactional
-public class ProductService {
+public class ProductService implements ProductServiceInterface{
 
 	@Autowired
 	private ProductRepository productRepository;
 	
 	
-	public int register(Product product) {
+	public int addProduct(Product product) {
 
 			//category.setPassword(Base64.getEncoder().encodeToString(retailer.getPassword().getBytes()));
 		Product updatedProduct = (Product) productRepository.save(product);

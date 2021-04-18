@@ -10,21 +10,19 @@ import com.lti.dto.CartStatus;
 import com.lti.entity.Cart;
 import com.lti.exception.CartServiceException;
 import com.lti.service.CartService;
+import com.lti.service.CartServiceInterface;
 
 @RestController
 @CrossOrigin
 public class CartController {
 
 	@Autowired
-	private CartService cartService;
+	private CartServiceInterface cartServiceInterface;
 	
-	@PostMapping("/cart")
+	@PostMapping("/add-cart")
 	public CartStatus addToCart(@RequestBody Cart cart) {
 		try {
-			//int otp = customer.getOtp();
-			//int genOtp = session.getAttribute("otp");
-			
-			int id = cartService.register(cart);
+			int id = cartServiceInterface.addCart(cart);
 			CartStatus status = new CartStatus();
 			status.setStatus(true);
 			status.setMessage("Cart Added successful!");
