@@ -10,5 +10,5 @@ public interface ProductServiceInterface {
 	
 	public int addProduct(Product product);
 	
-	public List<Product> fetchProduct();
+	public List<Product> fetchProducts();
 }

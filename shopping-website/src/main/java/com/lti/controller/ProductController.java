@@ -93,30 +93,33 @@ public class ProductController {
 		
 //		return categoryServiceInterface.fetchCategory();
 			
-			Product product = new Product();
+			List<Product> products =  productServiceInterface.fetchProducts();
 			
-			String projPath = request.getServletContext().getRealPath("/");
-			System.out.println(projPath);
-			
-			String tempDownloadPath = projPath + "/downloads/";
-			File f = new File(tempDownloadPath);
-			if(!f.exists())
-				f.mkdir();
-			
-			String targetFile = tempDownloadPath + product.getImage();
-			
-			//reading the original location where the image is present
-			String uploadedImagesPath = "d:/uploads/";
-			String sourceFile = uploadedImagesPath + product.getImage();
-			
-			try {
-				FileCopyUtils.copy(new File(sourceFile), new File(targetFile));
+			for(Product product : products) {
+				String projPath = request.getServletContext().getRealPath("/");
+				System.out.println(projPath);
+				
+				String tempDownloadPath = projPath + "/downloads/";
+				File f = new File(tempDownloadPath);
+				if(!f.exists())
+					f.mkdir();
+				
+				String targetFile = tempDownloadPath + product.getImage();
+				
+				//reading the original location where the image is present
+				String uploadedImagesPath = "d:/uploads/";
+				String sourceFile = uploadedImagesPath + product.getImage();
+				
+				try {
+					FileCopyUtils.copy(new File(sourceFile), new File(targetFile));
+				}
+				catch (IOException e) {
+					e.printStackTrace(); //hoping for no error will occur
+				}
 			}
-			catch (IOException e) {
-				e.printStackTrace(); //hoping for no error will occur
-			}
 			
-			return productServiceInterface.fetchProduct();
+			
+			return products;
 	}
 }
 			
