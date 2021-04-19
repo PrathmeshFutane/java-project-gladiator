@@ -9,12 +9,12 @@ import com.lti.repository.OrderRepository;
 
 @Service
 @Transactional
-public class OrderService {
+public class OrderService implements OrderServiceInterface{
 
 	@Autowired
 	private OrderRepository orderRepository;
 	
-	public int register(Order order) {		
+	public int addOrder(Order order) {		
 		Order updatedOrder = (Order) orderRepository.save(order);
 		return updatedOrder.getOrderId();
 	}

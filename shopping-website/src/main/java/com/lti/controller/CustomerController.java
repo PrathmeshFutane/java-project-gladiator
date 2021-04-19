@@ -10,8 +10,10 @@ import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RegisterStatus;
 import com.lti.dto.SendEmail;
+import com.lti.entity.Cart;
 import com.lti.entity.Customer;
 import com.lti.exception.CustomerServiceException;
+import com.lti.service.CartServiceInterface;
 import com.lti.service.CustomerServiceInterface;
 
 @RestController
@@ -24,13 +26,17 @@ public class CustomerController {
 	@PostMapping("/register")
 	public RegisterStatus registerCustomer(@RequestBody Customer customer) {
 		try {
-			int id = customerServiceInterface.register(customer);			
+			int id = customerServiceInterface.register(customer);	
+			
 			RegisterStatus status = new RegisterStatus();
 			status.setStatus(true);
 			status.setMessage("Registration successfull");
 			status.setRegisteredCustomerId(id);
 			
-			//send email
+//			Cart cart = new Cart()
+//			int cid = CartServiceInterface.addCart(cart);
+			
+//			send email
 			System.out.println("preparing to send message ...");
 			String message = "Welcome to webrash";
 			String subject = "Thank you for registration";
