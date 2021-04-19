@@ -28,7 +28,9 @@ public class CustomerService implements CustomerServiceInterface{
 			customer.setPassword(Base64.getEncoder().encodeToString(customer.getPassword().getBytes()));
 			Customer updatedCustomer = (Customer) customerRepository.save(customer);
 			//code to send email
+			System.out.println("this is for testing");
 			return updatedCustomer.getCustomerId();
+			
 		}
 	}
 	
