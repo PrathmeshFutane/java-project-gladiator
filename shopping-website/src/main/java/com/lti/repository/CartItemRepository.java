@@ -11,8 +11,6 @@ public class CartItemRepository extends GenericRepository{
 
 	public List<CartItem> fetchAllCartItem() {
 		List<CartItem> list = entityManager.createQuery("select c from CartItem c").getResultList();
-		return list;
-		
-		
+		return list;		
 	}
 }
