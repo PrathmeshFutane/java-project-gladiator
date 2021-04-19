@@ -1,13 +1,17 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.CartItemStatus;
 import com.lti.entity.CartItem;
+import com.lti.entity.Product;
 import com.lti.exception.CartItemServiceException;
 import com.lti.service.CartItemService;
 
@@ -18,7 +22,7 @@ public class CartItemController {
 	@Autowired
 	private CartItemService cartItemService;
 	
-	@PostMapping("/cartItem")
+	@PostMapping("/cart-item")
 	public CartItemStatus register(@RequestBody CartItem cartItem) {
 		try {
 			//int otp = customer.getOtp();
@@ -37,5 +41,16 @@ public class CartItemController {
 			status.setMessage(e.getMessage());
 			return status;
 		}
+	}
+	
+	
+	
+//	get all items
+	@GetMapping("/get-all-cart-item")
+	public List<CartItem> getAllCartItem(){
+		
+		List<CartItem> cartItems = cartItemService.fetchCartItems();
+		return cartItems;
+		
 	}
 }

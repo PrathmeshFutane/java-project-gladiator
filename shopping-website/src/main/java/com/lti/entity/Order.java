@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "shopping_order")
 public class Order {
@@ -36,6 +38,7 @@ public class Order {
 	private Customer customer;
 	
 //	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//	@JsonIgnore
 //	private List<OrderItem> orderItems;
 
 	public int getOrderId() {
