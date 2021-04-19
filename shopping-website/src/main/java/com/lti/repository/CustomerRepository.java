@@ -20,5 +20,6 @@ public class CustomerRepository extends GenericRepository {
 				.setParameter("em",email)
 				.setParameter("pw", password)
 				.getSingleResult();
+	
 	}
 }
