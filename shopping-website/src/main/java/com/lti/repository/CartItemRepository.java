@@ -9,8 +9,10 @@ import com.lti.entity.CartItem;
 @Repository
 public class CartItemRepository extends GenericRepository{
 
-	public List<CartItem> fetchAllCartItem() {
-		List<CartItem> list = entityManager.createQuery("select c from CartItem c").getResultList();
+	public List<CartItem> fetchAllCartItem(int id) {
+		List<CartItem> list = entityManager.createQuery("select ci from CartItem ci where ci.cart.cartId = :pk")
+				.setParameter("pk", id)
+				.getResultList();
 		return list;		
 	}
 }

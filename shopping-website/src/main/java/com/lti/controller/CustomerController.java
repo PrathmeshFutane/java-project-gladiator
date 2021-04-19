@@ -17,6 +17,7 @@ import com.lti.dto.SendEmail;
 import com.lti.entity.Cart;
 import com.lti.entity.Customer;
 import com.lti.exception.CustomerServiceException;
+import com.lti.repository.CustomerRepository;
 import com.lti.service.CustomerService;
 import com.lti.service.CartServiceInterface;
 import com.lti.service.CustomerServiceInterface;
@@ -26,7 +27,10 @@ import com.lti.service.CustomerServiceInterface;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerServiceInterface customerServiceInterface;	
+	private CustomerServiceInterface customerServiceInterface;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 	
 	@PostMapping("/register")
 	public RegisterStatus registerCustomer(@RequestBody Customer customer) {
@@ -42,14 +46,14 @@ public class CustomerController {
 //			int cid = CartServiceInterface.addCart(cart);
 			
 //			send email
-			System.out.println("preparing to send message ...");
-			String message = "Welcome to webrash";
-			String subject = "Thank you for registration";
-			String to = customer.getEmail();
-			String from = "webrashlti@gmail.com";
-			
-			SendEmail send = new SendEmail();
-			send.sendEmail(message,subject,to,from);
+//			System.out.println("preparing to send message ...");
+//			String message = "Welcome to webrash";
+//			String subject = "Thank you for registration";
+//			String to = customer.getEmail();
+//			String from = "webrashlti@gmail.com";
+//			
+//			SendEmail send = new SendEmail();
+//			send.sendEmail(message,subject,to,from);
 			
 			return status;
 		}
@@ -71,6 +75,8 @@ public class CustomerController {
 			loginStatus.setMessage("Login successful!");
 			loginStatus.setId(customer.getCustomerId());
 			loginStatus.setName(customer.getName());
+			Customer c = customerRepository.fetch(Customer.class, customer.getCustomerId());
+			loginStatus.setCartId(c.getCart().getCartId());
 			return loginStatus;
 		}
 		catch(CustomerServiceException e) {

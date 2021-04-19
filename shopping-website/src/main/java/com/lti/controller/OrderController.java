@@ -18,7 +18,7 @@ public class OrderController {
 	@Autowired
 	private OrderServiceInterface orderServiceInterface;
 	
-	@PostMapping("/add-order")
+	@PostMapping("/place-order")
 	public OrderStatus addOrder(@RequestBody Order order) {
 		try {
 			int id = orderServiceInterface.addOrder(order);

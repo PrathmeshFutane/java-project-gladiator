@@ -4,6 +4,7 @@ public class LoginStatus extends Status {
 
 	private int id;
 	private String name;
+	private int cartId;
 	//private Customer customer;
 	
 	
@@ -21,6 +22,14 @@ public class LoginStatus extends Status {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 	
 	

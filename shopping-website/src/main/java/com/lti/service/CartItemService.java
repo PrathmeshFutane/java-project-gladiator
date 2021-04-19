@@ -24,8 +24,8 @@ public class CartItemService {
 	
 	
 
-	public List<CartItem> fetchCartItems() {
-		return cartItemRepository.fetchAllCartItem();
+	public List<CartItem> fetchCartItems(int id) {
+		return cartItemRepository.fetchAllCartItem(id);
 	}
 	
 	
