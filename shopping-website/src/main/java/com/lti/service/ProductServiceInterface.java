@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import com.lti.entity.Product;
 
 public interface ProductServiceInterface {
@@ -7,4 +9,6 @@ public interface ProductServiceInterface {
 	public void updateImage(int productId, String newFileName);
 	
 	public int addProduct(Product product);
+	
+	public List<Product> fetchProduct();
 }

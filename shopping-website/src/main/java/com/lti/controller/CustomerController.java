@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RegisterStatus;
+import com.lti.dto.SendEmail;
 import com.lti.entity.Customer;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.CustomerServiceInterface;
@@ -18,29 +19,27 @@ import com.lti.service.CustomerServiceInterface;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerServiceInterface customerServiceInterface;
-	
-//	@Autowired
-//	private CartService cartService;
-	
-//	@Autowired
-//	private CartController cartController;
-	
+	private CustomerServiceInterface customerServiceInterface;	
 	
 	@PostMapping("/register")
 	public RegisterStatus registerCustomer(@RequestBody Customer customer) {
 		try {
-			int id = customerServiceInterface.register(customer);
-//			Cart cart = new Cart();
-//			cart.setCustomer(customer);
-//			int cid = cartService.register(cart);
-//			Cart cart = new Cart();
-//			cart.setCustomer(customer);
-//			cartController.addToCart(cart);
+			int id = customerServiceInterface.register(customer);			
 			RegisterStatus status = new RegisterStatus();
 			status.setStatus(true);
 			status.setMessage("Registration successfull");
 			status.setRegisteredCustomerId(id);
+			
+			//send email
+			System.out.println("preparing to send message ...");
+			String message = "Welcome to webrash";
+			String subject = "Thank you for registration";
+			String to = customer.getEmail();
+			String from = "webrashlti@gmail.com";
+			
+			SendEmail send = new SendEmail();
+			send.sendEmail(message,subject,to,from);
+			
 			return status;
 		}
 		catch(CustomerServiceException e) {

@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,11 @@ public class ProductService implements ProductServiceInterface{
 		Product product = productRepository.fetch(Product.class, productId);
 		product.setImage(newFileName);
 		productRepository.save(product);
+	}
+
+	@Override
+	public List<Product> fetchProduct() {
+		return productRepository.fetch();		
 	}
 }
 

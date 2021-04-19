@@ -1,11 +1,16 @@
 	package com.lti.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -81,4 +86,39 @@ public class ProductController {
 	
 	
 	
+	
+	//object having product information and image as well
+	@GetMapping("all-products")
+	public List<Product> getAllProduct(HttpServletRequest request) {
+		
+//		return categoryServiceInterface.fetchCategory();
+			
+			Product product = new Product();
+			
+			String projPath = request.getServletContext().getRealPath("/");
+			System.out.println(projPath);
+			
+			String tempDownloadPath = projPath + "/downloads/";
+			File f = new File(tempDownloadPath);
+			if(!f.exists())
+				f.mkdir();
+			
+			String targetFile = tempDownloadPath + product.getImage();
+			
+			//reading the original location where the image is present
+			String uploadedImagesPath = "d:/uploads/";
+			String sourceFile = uploadedImagesPath + product.getImage();
+			
+			try {
+				FileCopyUtils.copy(new File(sourceFile), new File(targetFile));
+			}
+			catch (IOException e) {
+				e.printStackTrace(); //hoping for no error will occur
+			}
+			
+			return productServiceInterface.fetchProduct();
+	}
 }
+			
+			
+		

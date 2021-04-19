@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "shopping_retailer")
 public class Retailer {
@@ -33,6 +35,7 @@ public class Retailer {
 	private char retailerStatus;
 	
 	@OneToMany(mappedBy = "retailer",cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Product> products;
 	
 	public char getRetailerStatus() {
