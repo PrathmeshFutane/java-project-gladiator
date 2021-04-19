@@ -11,6 +11,6 @@ public interface CustomerServiceInterface {
 	public Customer login(String email, String password);
 	
 	
-	
+	public Customer getCustomerProfile(int id);
 	
 }

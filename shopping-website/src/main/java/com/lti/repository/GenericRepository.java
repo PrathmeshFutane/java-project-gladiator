@@ -22,4 +22,11 @@ public class GenericRepository{
 		E e = entityManager.find(clazz, pk);
 		return e;
 	}
+	
+	
+	public <E> E delete(Class<E> clazz, Object pk) {
+		E e = entityManager.find(clazz, pk);
+		entityManager.remove(e);
+		return e;
+	}
 }

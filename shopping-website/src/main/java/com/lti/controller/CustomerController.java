@@ -82,4 +82,13 @@ public class CustomerController {
 	}
 	
 	
+	
+	//get profile of customer
+	@GetMapping("/customer-profile")
+	public Customer profile(@RequestParam("customerId") int id) {
+		Customer customer = customerServiceInterface.getCustomerProfile(id);
+		return customer;
+	}
+	
+	
 }

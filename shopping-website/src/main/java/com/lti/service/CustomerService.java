@@ -48,5 +48,9 @@ public class CustomerService implements CustomerServiceInterface{
 		}
 	}
 	
+	public Customer getCustomerProfile(int id) {
+		return customerRepository.fetch(Customer.class, id);
+	}
+	
 	
 }
