@@ -24,7 +24,7 @@ public class CartItemController {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");
 			
-			int id = cartItemService.register(cartItem);
+			int id = cartItemService.addCartItem(cartItem);
 			CartItemStatus status = new CartItemStatus();
 			status.setStatus(true);
 			status.setMessage("CartItem Added successful!");

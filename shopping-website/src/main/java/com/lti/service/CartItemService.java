@@ -14,9 +14,12 @@ public class CartItemService {
 	@Autowired
 	private CartItemRepository cartItemRepository;
 	
-	public int register(CartItem cartItem) {
+	public int addCartItem(CartItem cartItem) {
 
 		CartItem updatedCartItem = (CartItem) cartItemRepository.save(cartItem);
 		return updatedCartItem.getCartItemId();
 	}
+	
+	
+	
 }
