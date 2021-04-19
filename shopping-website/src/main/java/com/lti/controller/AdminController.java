@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.AdminStatus;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
-import com.lti.dto.RegisterStatus;
 import com.lti.entity.Admin;
 import com.lti.exception.AdminServiceException;
 import com.lti.service.AdminServiceInterface;
