@@ -29,6 +29,7 @@ public class CustomerService implements CustomerServiceInterface{
 			Customer updatedCustomer = (Customer) customerRepository.save(customer);
 			//code to send email
 			System.out.println("this is for testing");
+			System.out.println("this is proper testing");
 			return updatedCustomer.getCustomerId();
 			
 		}
