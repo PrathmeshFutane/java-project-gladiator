@@ -32,7 +32,7 @@ public class ProductService implements ProductServiceInterface{
 	}
 
 	@Override
-	public List<Product> fetchProduct() {
+	public List<Product> fetchProducts() {
 		return productRepository.fetch();		
 	}
 }
