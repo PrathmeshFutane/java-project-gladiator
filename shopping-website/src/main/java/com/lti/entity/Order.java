@@ -37,9 +37,9 @@ public class Order {
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 	
-//	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-//	@JsonIgnore
-//	private List<OrderItem> orderItems;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<OrderItem> orderItems;
 
 	public int getOrderId() {
 		return orderId;
@@ -79,6 +79,14 @@ public class Order {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 	
 	

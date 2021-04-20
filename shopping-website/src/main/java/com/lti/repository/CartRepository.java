@@ -2,16 +2,18 @@ package com.lti.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.lti.entity.Customer;
+import com.lti.entity.Cart;
+
 
 @Repository
 public class CartRepository extends GenericRepository{
 
-	public int fetchByCart(Customer customer) {
-		return (Integer)
+	public Cart fetchByCart(int id) {
+		return (Cart)
 				entityManager
-				.createQuery("select c from Cart c join fetch c.cartItem ci where c.customer.id = :pk")
-				.setParameter("pk",customer)
+				.createQuery("select c from Cart c join fetch c.cartItems ci where c.customer.id = :pk")
+				//.createQuery("select ct from Cart ct join Customer c where c.customer.id = :pk")
+				.setParameter("pk",id)
 				.getSingleResult();
 	}
 	

@@ -15,4 +15,7 @@ public class CartItemRepository extends GenericRepository{
 				.getResultList();
 		return list;		
 	}
+	
+	
+	
 }
