@@ -17,5 +17,14 @@ public class CartItemRepository extends GenericRepository{
 	}
 	
 	
+	public boolean isCartItemPresent(int id) {
+		return (Long) 
+				entityManager
+				.createQuery("select count(ci.id) from CartItem ci where ci.product.productId= :pk")
+				.setParameter("pk", id)
+				.getSingleResult() == 1 ? true : false;		
+	}
+	
+	
 	
 }

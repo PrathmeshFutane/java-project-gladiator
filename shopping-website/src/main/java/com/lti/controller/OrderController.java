@@ -16,6 +16,7 @@ import com.lti.entity.CartItem;
 import com.lti.entity.Customer;
 import com.lti.entity.Order;
 import com.lti.entity.OrderItem;
+import com.lti.entity.Product;
 import com.lti.exception.CartServiceException;
 import com.lti.repository.CartRepository;
 import com.lti.repository.OrderRepository;
@@ -47,6 +48,10 @@ public class OrderController {
 				OrderItem orderItems = new OrderItem();
 				orderItems.setProduct(cartItems.getProduct());
 				orderItems.setQuantity(cartItems.getQuantity());
+				
+				Product product = orderItems.getProduct();  
+				int total = product.getUnitPrice() * orderItems.getQuantity();
+				orderItems.setTotalPrice(total);
 				orderItems.setOrder(order);
 				list.add(orderItems);
 			}

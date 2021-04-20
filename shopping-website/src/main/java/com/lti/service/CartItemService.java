@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.entity.CartItem;
+import com.lti.exception.CartItemServiceException;
 import com.lti.repository.CartItemRepository;
 
 @Service
@@ -17,12 +18,15 @@ public class CartItemService implements CartItemServiceInterface{
 	private CartItemRepository cartItemRepository;
 	
 	public int addCartItem(CartItem cartItem) {
-
-		CartItem updatedCartItem = (CartItem) cartItemRepository.save(cartItem);
-		return updatedCartItem.getCartItemId();
+		if(cartItemRepository.isCartItemPresent(cartItem.getCartItemId())) {
+			throw new CartItemServiceException("Product already exist in cart");
+		}
+		else {
+			CartItem updatedCartItem = (CartItem) cartItemRepository.save(cartItem);
+			return updatedCartItem.getCartItemId();
 	}
 	
-	
+	}
 
 	public List<CartItem> fetchCartItems(int id) {
 		return cartItemRepository.fetchAllCartItem(id);
