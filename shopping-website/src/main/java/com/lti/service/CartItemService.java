@@ -18,22 +18,18 @@ public class CartItemService implements CartItemServiceInterface{
 	private CartItemRepository cartItemRepository;
 	
 	public int addCartItem(CartItem cartItem) {
-		if(cartItemRepository.isCartItemPresent(cartItem.getCartItemId())) {
+		if(cartItemRepository.isCartItemPresent(cartItem.getProduct().getProductId(), cartItem.getCart().getCartId())) {
 			throw new CartItemServiceException("Product already exist in cart");
 		}
 		else {
 			CartItem updatedCartItem = (CartItem) cartItemRepository.save(cartItem);
 			return updatedCartItem.getCartItemId();
-	}
+		}
 	
 	}
 
 	public List<CartItem> fetchCartItems(int id) {
 		return cartItemRepository.fetchAllCartItem(id);
 	}
-	
-	
-	
-	
 	
 }

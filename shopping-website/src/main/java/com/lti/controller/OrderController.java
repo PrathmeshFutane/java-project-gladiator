@@ -44,6 +44,13 @@ public class OrderController {
 			order.setOrderDate(today);
 			order.setShippingDate(today.plusDays(5));
 			order.setOrderStatus('Y');
+	
+//			OrderItem oi = new OrderItem();
+//			for(Order o : oi.getTotalPrice() ) {
+//				int totalPrice = totalPrice + o
+//			}
+//			order.setTotalPrice(totalPrice);
+			
 			
 			int customerId =  order.getCustomer().getCustomerId();
 			Cart c = cartRepository.fetchByCart(customerId);
@@ -53,7 +60,11 @@ public class OrderController {
 				orderItems.setProduct(cartItems.getProduct());
 				orderItems.setQuantity(cartItems.getQuantity());
 				
-				Product product = orderItems.getProduct();  
+				Product product = orderItems.getProduct();
+				
+				int finalQuantity = product.getStock() - orderItems.getQuantity();
+				product.setStock(finalQuantity);
+				
 				int total = product.getUnitPrice() * orderItems.getQuantity();
 				orderItems.setTotalPrice(total);
 				orderItems.setOrder(order);

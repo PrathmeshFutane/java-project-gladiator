@@ -17,11 +17,12 @@ public class CartItemRepository extends GenericRepository{
 	}
 	
 	
-	public boolean isCartItemPresent(int id) {
+	public boolean isCartItemPresent(int productId, int cartId) {
 		return (Long) 
 				entityManager
-				.createQuery("select count(ci.id) from CartItem ci where ci.product.productId= :pk")
-				.setParameter("pk", id)
+				.createQuery("select count(ci.id) from CartItem ci where ci.product.productId= :productId  AND  ci.cart.cartId= :cartId")
+				.setParameter("productId", productId)
+				.setParameter("cartId", cartId)
 				.getSingleResult() == 1 ? true : false;		
 	}
 	

@@ -7,7 +7,7 @@ import com.lti.entity.Cart;
 
 @Repository
 public class CartRepository extends GenericRepository{
-
+	//most important
 	public Cart fetchByCart(int id) {
 		return (Cart)
 				entityManager
