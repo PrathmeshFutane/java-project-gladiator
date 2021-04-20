@@ -27,10 +27,7 @@ public class CartItemController {
 	
 	@PostMapping("/cart-item")
 	public CartItemStatus generateCart(@RequestBody CartItem cartItem) {
-		try {
-			//int otp = customer.getOtp();
-			//int genOtp = session.getAttribute("otp");
-			
+		try {			
 			int id = cartItemServiceInterface.addCartItem(cartItem);
 			CartItemStatus status = new CartItemStatus();
 			status.setStatus(true);
@@ -48,7 +45,7 @@ public class CartItemController {
 	
 	
 	
-//	get all items
+//	get all cart items
 	@PostMapping("/get-all-cart-item")
 	public List<CartItem> getAllCartItem(@RequestBody CartItem ci){
 		List<CartItem> cartItems = cartItemServiceInterface.fetchCartItems(ci.getCart().getCartId());

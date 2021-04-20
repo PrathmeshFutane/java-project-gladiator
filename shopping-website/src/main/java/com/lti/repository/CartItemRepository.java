@@ -15,4 +15,23 @@ public class CartItemRepository extends GenericRepository{
 				.getResultList();
 		return list;		
 	}
+	
+	
+	public boolean isCartItemPresent(int productId, int cartId) {
+		return (Long) 
+				entityManager
+				.createQuery("select count(ci.id) from CartItem ci where ci.product.productId= :productId  AND  ci.cart.cartId= :cartId")
+				.setParameter("productId", productId)
+				.setParameter("cartId", cartId)
+				.getSingleResult() == 1 ? true : false;		
+	}
+	
+	public CartItem deleteCart(int id) {
+		return (CartItem)
+				entityManager
+				.createQuery("Delete from CartItem ci where ci.cart.cartId= :pk")
+				.setParameter("pk",id)
+				.getSingleResult();
+	}
+	
 }
