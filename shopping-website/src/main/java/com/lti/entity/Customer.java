@@ -7,10 +7,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "shopping_customer")
 public class Customer {
 
-	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="shopping_customer_seq")
+	@SequenceGenerator(sequenceName = "customer_sequence", allocationSize = 1, name ="shopping_customer_seq")
 	@Column(name = "customer_id")
 	private int customerId;
 	

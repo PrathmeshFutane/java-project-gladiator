@@ -3,17 +3,21 @@ package com.lti.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "shopping_cart_item")
 public class CartItem {
 
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="Shopping_cartitem_seq")
+	@SequenceGenerator(sequenceName = "cartitem_sequence", allocationSize = 1, name ="shopping_cartitem_seq")
 	@Column(name = "cart_item_id")
 	private int cartItemId;
 	

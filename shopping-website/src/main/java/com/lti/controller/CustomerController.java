@@ -35,6 +35,7 @@ public class CustomerController {
 	@PostMapping("/register")
 	public RegisterStatus registerCustomer(@RequestBody Customer customer) {
 		try {
+			customer.setAccountStatus('Y');
 			int id = customerServiceInterface.register(customer);	
 			
 			RegisterStatus status = new RegisterStatus();

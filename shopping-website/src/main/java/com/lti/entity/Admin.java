@@ -3,15 +3,19 @@ package com.lti.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "shopping_admin")
 public class Admin {
 
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="shopping_admin_seq")
+	@SequenceGenerator(sequenceName = "admin_sequence", allocationSize = 1, name ="shopping_admin_seq")
 	@Column(name = "admin_id")
 	private int adminId;
 	private String name;

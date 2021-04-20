@@ -6,11 +6,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,8 +20,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "shopping_cart")
 public class Cart {
 
+	
+	
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="shopping_cart_seq")
+	@SequenceGenerator(sequenceName = "cart_sequence", allocationSize = 1, name ="shopping_cart_seq")
 	@Column(name = "cart_id")
 	private int cartId;
 	

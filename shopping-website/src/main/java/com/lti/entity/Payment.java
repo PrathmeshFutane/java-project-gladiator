@@ -9,17 +9,23 @@ package com.lti.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "shopping_payment")
 public class Payment {
 
+	
+	
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="shopping_payment_seq")
+	@SequenceGenerator(sequenceName = "payment_sequence", allocationSize = 1, name ="shopping_payment_seq")
 	@Column(name = "payment_id")
 	private int paymentId;
 	
