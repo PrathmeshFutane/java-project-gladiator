@@ -16,13 +16,14 @@ import com.lti.entity.CartItem;
 import com.lti.entity.Product;
 import com.lti.exception.CartItemServiceException;
 import com.lti.service.CartItemService;
+import com.lti.service.CartItemServiceInterface;
 
 @RestController
 @CrossOrigin
 public class CartItemController {
 
 	@Autowired
-	private CartItemService cartItemService;
+	private CartItemServiceInterface cartItemServiceInterface;
 	
 	@PostMapping("/cart-item")
 	public CartItemStatus generateCart(@RequestBody CartItem cartItem) {
@@ -30,7 +31,7 @@ public class CartItemController {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");
 			
-			int id = cartItemService.addCartItem(cartItem);
+			int id = cartItemServiceInterface.addCartItem(cartItem);
 			CartItemStatus status = new CartItemStatus();
 			status.setStatus(true);
 			status.setMessage("CartItem Added successful!");
@@ -50,7 +51,7 @@ public class CartItemController {
 //	get all items
 	@PostMapping("/get-all-cart-item")
 	public List<CartItem> getAllCartItem(@RequestBody CartItem ci){
-		List<CartItem> cartItems = cartItemService.fetchCartItems(ci.getCart().getCartId());
+		List<CartItem> cartItems = cartItemServiceInterface.fetchCartItems(ci.getCart().getCartId());
 		return cartItems;
 	}
 }

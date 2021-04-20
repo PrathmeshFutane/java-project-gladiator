@@ -11,7 +11,7 @@ import com.lti.repository.CartItemRepository;
 
 @Service
 @Transactional
-public class CartItemService {
+public class CartItemService implements CartItemServiceInterface{
 
 	@Autowired
 	private CartItemRepository cartItemRepository;

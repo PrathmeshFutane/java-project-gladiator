@@ -51,7 +51,7 @@ public class OrderItemService {
 	
 	public int addOrderItem(OrderItem orderItem){
 		
-//		Cart ca = cartRepository.fetchByCart(c);
+//		Cart ca = cartRepository.fetchByCart(ca.getCustomer().getCustomerId());
 //		
 //		for(CartItem ci : ca.getCartItems()) {
 //					//CartItem ci = (CartItem) dao.fetch(CartItem.class, 162);
