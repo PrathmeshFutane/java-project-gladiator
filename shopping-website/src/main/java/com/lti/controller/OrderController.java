@@ -18,6 +18,7 @@ import com.lti.entity.Order;
 import com.lti.entity.OrderItem;
 import com.lti.entity.Product;
 import com.lti.exception.CartServiceException;
+import com.lti.repository.CartItemRepository;
 import com.lti.repository.CartRepository;
 import com.lti.repository.OrderRepository;
 import com.lti.service.OrderServiceInterface;
@@ -31,6 +32,9 @@ public class OrderController {
 	
 	@Autowired
 	private CartRepository cartRepository;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 	
 	@PostMapping("/place-order")
 	public OrderStatus placeOrder(@RequestBody Order order) {
@@ -57,6 +61,16 @@ public class OrderController {
 			}
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
+			
+			//CartItemRepository
+//			cartItemRepository.deleteCart(c.getCartId());
+//			System.out.println("delete done");
+			
+			//GenericRepository
+//			cartRepository.delete(Cart.class, c.getCartId());
+//			System.out.println("delete done");
+//			
+			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
 			status.setMessage("Order Added successful!");
