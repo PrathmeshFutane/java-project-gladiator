@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,6 +41,11 @@ public class Order {
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<OrderItem> orderItems;
+	
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	@JoinColumn(name = "payment_id")
+	@JsonIgnore
+	private  Payment payment;
 
 	public int getOrderId() {
 		return orderId;

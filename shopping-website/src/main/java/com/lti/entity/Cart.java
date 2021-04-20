@@ -35,6 +35,8 @@ public class Cart {
 	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<CartItem> cartItems;
+	
+	
 
 	public List<CartItem> getCartItems() {
 		return cartItems;

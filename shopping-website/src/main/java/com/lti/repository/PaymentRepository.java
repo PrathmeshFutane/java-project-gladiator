@@ -13,5 +13,7 @@ import org.springframework.stereotype.Repository;
 public class PaymentRepository extends GenericRepository{
 	
 	
+	
+	
 
 }

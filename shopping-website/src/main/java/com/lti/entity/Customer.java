@@ -43,6 +43,13 @@ public class Customer {
 	@JsonIgnore
 	private Cart cart;
 	
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+	@JoinColumn(name = "payment_id")
+	@JsonIgnore
+	private  Payment payment;
+	
+	
+	
 //	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 //	private List<Cart> carts;
 	
@@ -120,6 +127,14 @@ public class Customer {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 //	public List<Order> getOrders() {
