@@ -12,8 +12,15 @@ public class ProductRepository extends GenericRepository{
 
 	public List<Product> fetch() {
 		List<Product> list = entityManager.createQuery("select p from Product p").getResultList();
+		return list;	
+	}
+	
+	
+	public List<Product> fetchByCategory(int categoryId){
+		List<Product> list = entityManager
+								.createQuery("select p from Product p where p.category.categoryId= :categoryId")
+								.setParameter("categoryId", categoryId)
+								.getResultList();
 		return list;
-		
-		
 	}
 }

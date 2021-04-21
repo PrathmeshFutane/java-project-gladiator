@@ -11,4 +11,6 @@ public interface ProductServiceInterface {
 	public int addProduct(Product product);
 	
 	public List<Product> fetchProducts();
+	
+	public List<Product> getProductByCategory(int categoryId);
 }

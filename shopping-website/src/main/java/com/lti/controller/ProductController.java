@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.ImageStatus;
@@ -117,9 +118,21 @@ public class ProductController {
 					e.printStackTrace(); //hoping for no error will occur
 				}
 			}
-			
-			
 			return products;
+	}
+	
+	
+	
+	
+	
+	
+	
+	//get product by category
+	@GetMapping("/get-products-by-category")
+	public List<Product> getAllProductByCategory(@RequestParam("categoryId") int categoryId){
+		List<Product> products =  productServiceInterface.getProductByCategory(categoryId);
+		return products;
+		
 	}
 }
 			

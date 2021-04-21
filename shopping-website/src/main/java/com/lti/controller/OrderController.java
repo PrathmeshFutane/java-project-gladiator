@@ -72,6 +72,7 @@ public class OrderController {
 				list.add(orderItems);
 				
 				finalTotal = finalTotal + total;
+				
 			}
 			order.setTotalPrice(finalTotal);
 			order.setOrderItems(list);

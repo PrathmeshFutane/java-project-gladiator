@@ -35,6 +35,10 @@ public class ProductService implements ProductServiceInterface{
 	public List<Product> fetchProducts() {
 		return productRepository.fetch();		
 	}
+	
+	public List<Product> getProductByCategory(int categoryId) {
+		return productRepository.fetchByCategory(categoryId);		
+	}
 }
 
 
