@@ -33,6 +33,9 @@ public class Order {
 	@Column(name = "order_date")
 	private LocalDate orderDate;
 	
+	@Column(name = "total_price")
+	private double totalPrice;
+	
 	@Column(name = "shipping_date")
 	private LocalDate shippingDate;
 	
@@ -86,6 +89,24 @@ public class Order {
 
 	public Customer getCustomer() {
 		return customer;
+	}
+	
+	
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 	public void setCustomer(Customer customer) {

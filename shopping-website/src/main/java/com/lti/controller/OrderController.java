@@ -44,6 +44,7 @@ public class OrderController {
 			order.setOrderDate(today);
 			order.setShippingDate(today.plusDays(5));
 			order.setOrderStatus('Y');
+			order.setTotalPrice(513);
 	
 //			OrderItem oi = new OrderItem();
 //			for(Order o : oi.getTotalPrice() ) {
