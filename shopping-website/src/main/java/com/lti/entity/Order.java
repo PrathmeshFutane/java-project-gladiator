@@ -34,7 +34,7 @@ public class Order {
 	private LocalDate orderDate;
 	
 	@Column(name = "total_price")
-	private double totalPrice;
+	private long totalPrice;
 	
 	@Column(name = "shipping_date")
 	private LocalDate shippingDate;
@@ -93,11 +93,13 @@ public class Order {
 	
 	
 
-	public double getTotalPrice() {
+	
+
+	public long getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
+	public void setTotalPrice(long totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 

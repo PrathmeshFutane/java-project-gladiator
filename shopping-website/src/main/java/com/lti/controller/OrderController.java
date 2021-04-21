@@ -49,7 +49,7 @@ public class OrderController {
 			order.setOrderDate(today);
 			order.setShippingDate(today.plusDays(5));
 			order.setOrderStatus('Y');
-			order.setTotalPrice(513);
+			//order.setTotalPrice(order.getTotalPrice());
 	
 //			OrderItem oi = new OrderItem();
 //			for(Order o : oi.getTotalPrice() ) {
@@ -88,9 +88,10 @@ public class OrderController {
 //			System.out.println("delete done");public CartItemStatus deleteCart(@RequestBody CartItem cartItems) {
 			
 			//cart delete 
-//			Cart cart = new Cart();
-		//	Cart cart = orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
-//			
+			//Cart cart = new Cart();
+			System.out.println("----------------------"+order.getCustomer().getCustomerId());
+//			orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
+			orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
 			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
@@ -105,6 +106,15 @@ public class OrderController {
 			return status;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/cancel-order")
 	public OrderStatus cancelOrder(@RequestParam("orderId") int id) {
