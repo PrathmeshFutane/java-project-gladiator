@@ -26,8 +26,8 @@ public class CartItemRepository extends GenericRepository{
 				.getSingleResult() == 1 ? true : false;		
 	}
 	
-	public CartItem deleteCart(int id) {
-		return (CartItem)
+	public int deleteCart(int id) {
+		return (Integer)
 				entityManager
 				.createQuery("Delete from CartItem ci where ci.cart.cartId= :pk")
 				.setParameter("pk",id)

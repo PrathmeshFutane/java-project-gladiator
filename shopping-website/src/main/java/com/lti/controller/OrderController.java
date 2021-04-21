@@ -6,10 +6,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.CartItemStatus;
 import com.lti.dto.OrderStatus;
 import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
@@ -21,6 +24,8 @@ import com.lti.exception.CartServiceException;
 import com.lti.repository.CartItemRepository;
 import com.lti.repository.CartRepository;
 import com.lti.repository.OrderRepository;
+import com.lti.service.CartItemServiceInterface;
+import com.lti.service.OrderItemServiceInterface;
 import com.lti.service.OrderServiceInterface;
 
 @RestController
@@ -80,40 +85,18 @@ public class OrderController {
 			
 			//GenericRepository
 //			cartRepository.delete(Cart.class, c.getCartId());
-//			System.out.println("delete done");
+//			System.out.println("delete done");public CartItemStatus deleteCart(@RequestBody CartItem cartItems) {
+			
+			//cart delete 
+//			Cart cart = new Cart();
+		//	Cart cart = orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
 //			
 			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
 			status.setMessage("Order Added successful!");
 			status.setRegisteredOrderId(id);
-			return status;
-			
-			
-			
-					
-					
-
-			
-			
-			
-			
-//			Cart cart = new Cart();
-//	
-//			int cart1 = cart.getCustomer().getCustomerId();
-//			
-//			List<CartItem> cartItems = cart1.getCartItems();
-//			
-//			
-//			for(CartItem cartItems1 : cartItems ) {
-//				System.out.println(cartItems1.getQuantity() + "," + cartItems1.getProduct().getProductId());
-//			}
-//			int id = orderServiceInterface.addOrder(order);
-//			OrderStatus status = new OrderStatus();
-//			status.setStatus(true);
-//			status.setMessage("Order Added successful!");
-//			//status.setRegisteredOrderId(id);
-//			return status;
+			return status;			
 		}
 		catch(CartServiceException e) {
 			OrderStatus status = new OrderStatus();
@@ -121,5 +104,16 @@ public class OrderController {
 			status.setMessage(e.getMessage());
 			return status;
 		}
+	}
+	
+	@GetMapping("/cancel-order")
+	public OrderStatus cancelOrder(@RequestParam("orderId") int id) {
+		Order o = orderServiceInterface.deleteOrder(id);
+		//return ci.getCartItemId();
+		OrderStatus status = new OrderStatus();
+		status.setStatus(true);
+		status.setMessage("Order cancelled successfully!");
+		//status.setRegisteredCartItemId(id);
+		return status;
 	}
 }
