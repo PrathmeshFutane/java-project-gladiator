@@ -75,6 +75,7 @@ public class OrderController {
 				orderItems.setTotalPrice(total);
 				orderItems.setOrder(order);
 				list.add(orderItems);
+				
 			}
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
@@ -90,8 +91,13 @@ public class OrderController {
 			//cart delete 
 			//Cart cart = new Cart();
 			System.out.println("----------------------"+order.getCustomer().getCustomerId());
-//			orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
-			orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
+			
+			//jpql method
+			//orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
+			
+			//generic method
+			//Cart cart = new Cart();
+			//Cart ca = orderServiceInterface.deleteCartEg(c.getCartId());
 			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
