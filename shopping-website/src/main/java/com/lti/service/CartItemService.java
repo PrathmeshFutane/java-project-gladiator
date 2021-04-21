@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
 import com.lti.exception.CartItemServiceException;
 import com.lti.repository.CartItemRepository;
@@ -30,6 +31,14 @@ public class CartItemService implements CartItemServiceInterface{
 
 	public List<CartItem> fetchCartItems(int id) {
 		return cartItemRepository.fetchAllCartItem(id);
+	}
+	
+//	public int deleteCart(int id) {
+//		return cartItemRepository.deleteCart(id);
+//	}
+	
+	public CartItem deleteCart1(int id) {
+		return cartItemRepository.delete(CartItem.class, id);
 	}
 	
 }

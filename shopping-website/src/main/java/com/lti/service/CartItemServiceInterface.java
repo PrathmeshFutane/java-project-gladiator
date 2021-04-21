@@ -9,4 +9,8 @@ public interface CartItemServiceInterface {
 	public int addCartItem(CartItem cartItem);
 	
 	public List<CartItem> fetchCartItems(int id);
+	
+	//public int deleteCart(int id) ;
+	
+	public CartItem deleteCart1(int id);
 }

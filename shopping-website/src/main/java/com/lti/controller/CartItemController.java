@@ -51,4 +51,22 @@ public class CartItemController {
 		List<CartItem> cartItems = cartItemServiceInterface.fetchCartItems(ci.getCart().getCartId());
 		return cartItems;
 	}
+	
+	//deleting the individual cart Item
+//	@PostMapping("/delete-cart-item")
+//	public int deleteCart(@RequestBody CartItem ci) {
+//		CartItem ci = cartItemServiceInterface.deleteCart());
+//	}
+	
+	@PostMapping("/delete-cart-item")
+	public CartItemStatus deleteCart(@RequestBody CartItem cartItems) {
+		CartItem ci = cartItemServiceInterface.deleteCart1(cartItems.getCartItemId());
+		//return ci.getCartItemId();
+		CartItemStatus status = new CartItemStatus();
+		status.setStatus(true);
+		status.setMessage("CartItem Deleted successfully!");
+		//status.setRegisteredCartItemId(id);
+		return status;
+	}
+	
 }
