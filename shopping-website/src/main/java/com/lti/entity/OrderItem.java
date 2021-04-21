@@ -24,8 +24,8 @@ public class OrderItem {
 	
 	private int quantity;
 		
-	@Column(name = "total_price")
-	private int totalPrice;
+	@Column(name = "sub_total_price")
+	private int subTotalPrice;
 	 
 	@ManyToOne
 	@JoinColumn(name = "order_id")
@@ -51,12 +51,12 @@ public class OrderItem {
 		this.quantity = quantity;
 	}
 
-	public int getTotalPrice() {
-		return totalPrice;
+	public int getSubTotalPrice() {
+		return subTotalPrice;
 	}
 
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setSubTotalPrice(int subTotalPrice) {
+		this.subTotalPrice = subTotalPrice;
 	}
 
 	public Order getOrder() {

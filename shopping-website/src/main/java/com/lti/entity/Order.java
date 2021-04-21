@@ -36,8 +36,8 @@ public class Order {
 	@Column(name = "total_price")
 	private long totalPrice;
 	
-	@Column(name = "shipping_date")
-	private LocalDate shippingDate;
+	@Column(name = "delivery_date")
+	private LocalDate deliveryDate;
 	
 	@Column(name = "order_status")
 	private char orderStatus;
@@ -71,12 +71,12 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public LocalDate getShippingDate() {
-		return shippingDate;
+	public LocalDate getDeliveryDate() {
+		return deliveryDate;
 	}
 
-	public void setShippingDate(LocalDate shippingDate) {
-		this.shippingDate = shippingDate;
+	public void setDeliveryDate(LocalDate deliveryDate) {
+		this.deliveryDate = deliveryDate;
 	}
 
 	public char getOrderStatus() {

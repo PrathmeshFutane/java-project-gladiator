@@ -47,19 +47,11 @@ public class OrderController {
 	@PostMapping("/place-order")
 	public OrderStatus placeOrder(@RequestBody Order order) {
 		try {
-			
+			int finalTotal = 0;
 			LocalDate today = LocalDate.now(); 
 			order.setOrderDate(today);
-			order.setShippingDate(today.plusDays(5));
-			order.setOrderStatus('Y');
-			//order.setTotalPrice(order.getTotalPrice());
-	
-//			OrderItem oi = new OrderItem();
-//			for(Order o : oi.getTotalPrice() ) {
-//				int totalPrice = totalPrice + o
-//			}
-//			order.setTotalPrice(totalPrice);
-			
+			order.setDeliveryDate(today.plusDays(5));
+			order.setOrderStatus('Y');			
 			
 			int customerId =  order.getCustomer().getCustomerId();
 			Cart c = cartRepository.fetchByCart(customerId);
@@ -75,11 +67,13 @@ public class OrderController {
 				product.setStock(finalQuantity);
 				
 				int total = product.getUnitPrice() * orderItems.getQuantity();
-				orderItems.setTotalPrice(total);
+				orderItems.setSubTotalPrice(total);
 				orderItems.setOrder(order);
 				list.add(orderItems);
 				
+				finalTotal = finalTotal + total;
 			}
+			order.setTotalPrice(finalTotal);
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
 			
