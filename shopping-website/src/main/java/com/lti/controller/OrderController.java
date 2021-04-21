@@ -83,9 +83,9 @@ public class OrderController {
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
 			
-			//orderRepository.delete(Cart.class, 10000);
+//			orderRepository.delete(Cart.class, 10000);
 			
-			
+			  
 			
 			//CartItemRepository
 //			cartItemRepository.deleteCart(c.getCartId());
