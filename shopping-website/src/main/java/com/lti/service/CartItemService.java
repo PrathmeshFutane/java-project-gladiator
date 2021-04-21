@@ -37,7 +37,7 @@ public class CartItemService implements CartItemServiceInterface{
 //		return cartItemRepository.deleteCart(id);
 //	}
 	
-	public CartItem deleteCart1(int id) {
+	public CartItem deleteCart(int id) {
 		return cartItemRepository.delete(CartItem.class, id);
 	}
 	

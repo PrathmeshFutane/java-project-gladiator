@@ -12,5 +12,5 @@ public interface CartItemServiceInterface {
 	
 	//public int deleteCart(int id) ;
 	
-	public CartItem deleteCart1(int id);
+	public CartItem deleteCart(int id);
 }

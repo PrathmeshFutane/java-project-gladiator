@@ -60,7 +60,7 @@ public class CartItemController {
 	
 	@PostMapping("/delete-cart-item")
 	public CartItemStatus deleteCart(@RequestBody CartItem cartItems) {
-		CartItem ci = cartItemServiceInterface.deleteCart1(cartItems.getCartItemId());
+		CartItem ci = cartItemServiceInterface.deleteCart(cartItems.getCartItemId());
 		//return ci.getCartItemId();
 		CartItemStatus status = new CartItemStatus();
 		status.setStatus(true);
