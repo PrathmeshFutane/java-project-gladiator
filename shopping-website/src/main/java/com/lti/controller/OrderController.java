@@ -39,6 +39,9 @@ public class OrderController {
 	private CartRepository cartRepository;
 	
 	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Autowired
 	private CartItemRepository cartItemRepository;
 	
 	@PostMapping("/place-order")
@@ -80,6 +83,10 @@ public class OrderController {
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
 			
+			//orderRepository.delete(Cart.class, 10000);
+			
+			
+			
 			//CartItemRepository
 //			cartItemRepository.deleteCart(c.getCartId());
 //			System.out.println("delete done");
@@ -98,6 +105,7 @@ public class OrderController {
 			//generic method
 			//Cart cart = new Cart();
 			//Cart ca = orderServiceInterface.deleteCartEg(c.getCartId());
+		
 			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
