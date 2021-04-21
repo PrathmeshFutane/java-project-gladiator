@@ -13,8 +13,6 @@ public class AdminRepository extends GenericRepository{
 				.getSingleResult() == 1 ? true : false; 
 	}
 	
-	
-	
 	public int fetchIdByEmailAndPassword(String email, String password) {
 		return (Integer)
 				entityManager

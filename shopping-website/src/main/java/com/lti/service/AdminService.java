@@ -42,5 +42,9 @@ public class AdminService implements AdminServiceInterface{
 			throw new AdminServiceException("Invalid email/password");
 		}
 	}
+	
+	public Admin getAdminProfile(int id) {
+		return adminRepository.fetch(Admin.class, id);
+	}
 }
 
