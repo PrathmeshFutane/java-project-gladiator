@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.CartItemStatus;
 import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
 import com.lti.exception.CartItemServiceException;
@@ -39,6 +40,12 @@ public class CartItemService implements CartItemServiceInterface{
 	
 	public CartItem deleteCart(int id) {
 		return cartItemRepository.delete(CartItem.class, id);
+	}
+	
+	
+	public CartItem updateQuantity(CartItem cartItems) {
+		return (CartItem) cartItemRepository.save(cartItems);
+		
 	}
 	
 }

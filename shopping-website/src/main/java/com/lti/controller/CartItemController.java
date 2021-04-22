@@ -15,6 +15,7 @@ import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
 import com.lti.entity.Product;
 import com.lti.exception.CartItemServiceException;
+import com.lti.repository.CartItemRepository;
 import com.lti.service.CartItemService;
 import com.lti.service.CartItemServiceInterface;
 
@@ -24,6 +25,9 @@ public class CartItemController {
 
 	@Autowired
 	private CartItemServiceInterface cartItemServiceInterface;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 	
 	@PostMapping("/cart-item")
 	public CartItemStatus generateCart(@RequestBody CartItem cartItem) {
@@ -67,6 +71,21 @@ public class CartItemController {
 		status.setMessage("CartItem Deleted successfully!");
 		//status.setRegisteredCartItemId(id);
 		return status;
+	}
+	
+	
+	@PostMapping("/update-cart-item")
+	public CartItemStatus updateQuantity(@RequestBody CartItem cartItems) {
+		System.out.println(cartItems.getCartItemId()+" "+cartItems.getQuantity()+" "+cartItems.getCart().getCartId()+" "+cartItems.getProduct().getProductId());
+		CartItem ci1 = cartItemRepository.fetch(CartItem.class, cartItems.getCartItemId());
+		ci1.setQuantity(cartItems.getQuantity());
+		cartItemServiceInterface.updateQuantity(ci1);
+		CartItemStatus status = new CartItemStatus();
+		status.setStatus(true);
+		status.setMessage("CartItem updated successfully!");
+		//status.setRegisteredCartItemId(id);
+		return status;
+		//return null;
 	}
 	
 }

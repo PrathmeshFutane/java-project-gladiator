@@ -34,4 +34,6 @@ public class CartItemRepository extends GenericRepository{
 				.getSingleResult();
 	}
 	
+	
+	
 }
