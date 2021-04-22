@@ -1,13 +1,14 @@
 package com.lti.service;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 
 import com.lti.exception.RetailerServiceException;
@@ -44,5 +45,9 @@ public class RetailerService implements RetailerServiceInterface {
 		//catch(NoResultException e) {
 			throw new RetailerServiceException("Invalid email/password");
 		}
+	}
+	
+	public List<Product> getProductsByRetailerId(int retailerId) {
+		return retailerRepository.fetchByRetailerId(retailerId);		
 	}
 }

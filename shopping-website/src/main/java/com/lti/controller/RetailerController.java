@@ -1,14 +1,19 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RetailerRegisterStatus;
+import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 
 import com.lti.exception.RetailerServiceException;
@@ -60,5 +65,12 @@ public class RetailerController {
 			loginStatus.setMessage(e.getMessage());		
 			return loginStatus;
 		}
+	}
+	
+	@GetMapping("/get-products-by-retailer")
+	public List<Product> getAllProductByRetailerId(@RequestParam("retailerId") int retailerId){
+		List<Product> products =  retailerServiceInterface.getProductsByRetailerId(retailerId);
+		return products;
+		
 	}
 }

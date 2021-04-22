@@ -1,6 +1,10 @@
 package com.lti.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
+import com.lti.entity.Product;
 
 @Repository
 public class RetailerRepository extends GenericRepository{
@@ -21,5 +25,13 @@ public class RetailerRepository extends GenericRepository{
 				.setParameter("em", email)
 				.setParameter("pw", password)
 				.getSingleResult();
+	}
+	
+	public List<Product> fetchByRetailerId(int retailerId){
+		List<Product> list = entityManager
+								.createQuery("select p from Product p where p.retailer.retailerId= :retailerId")
+								.setParameter("retailerId", retailerId)
+								.getResultList();
+		return list;
 	}
 }
