@@ -37,8 +37,11 @@ public class OrderService implements OrderServiceInterface{
 		return orderRepository.delete(Order.class, id);
 	}
 	
-//	public Cart deleteCart(int id) {
-//		return orderRepository.deleteCart(id);
-//	}
+	public int deleteCart(int id) {
+		return orderRepository.deleteCart(id);
+	}
+
+
+	
 	
 }

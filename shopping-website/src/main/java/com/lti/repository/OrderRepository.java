@@ -10,13 +10,13 @@ import com.lti.entity.OrderItem;
 @Repository
 public class OrderRepository extends GenericRepository{
 
-//	public int deleteCart(int id) {
-//		return (Integer)
-//				entityManager
-//				.createQuery("delete from Cart c where c.customer.customerId= :pk")
-//				.setParameter("pk",id)
-//				.getSingleResult();
-//	}
+	public int deleteCart(int id) {
+		return (Integer)
+				entityManager
+				.createQuery("delete from CartItem ci where ci.cart.cartId= :pk")
+				.setParameter("pk",id)
+				.executeUpdate();
+	}
 	
 	
 	

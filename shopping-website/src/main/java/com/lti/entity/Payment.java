@@ -30,7 +30,7 @@ public class Payment {
 	private int paymentId;
 	
 	@Column(name = "bill_amount")
-	private int billAmount;
+	private long billAmount;
 	
 	@Column(name="card_number")
 	private long cardNumber;
@@ -59,11 +59,13 @@ public class Payment {
 		this.paymentId = paymentId;
 	}
 
-	public int getBillAmount() {
+	
+
+	public long getBillAmount() {
 		return billAmount;
 	}
 
-	public void setBillAmount(int billAmount) {
+	public void setBillAmount(long billAmount) {
 		this.billAmount = billAmount;
 	}
 

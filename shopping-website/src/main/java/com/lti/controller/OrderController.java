@@ -78,7 +78,7 @@ public class OrderController {
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
 			
-//			orderRepository.delete(Cart.class, 10000);
+			//orderRepository.delete(Cart.class, 10000);
 			
 			  
 			
@@ -95,7 +95,7 @@ public class OrderController {
 			System.out.println("----------------------"+order.getCustomer().getCustomerId());
 			
 			//jpql method
-			//orderServiceInterface.deleteCart(order.getCustomer().getCustomerId());
+			//orderServiceInterface.deleteCart(c.getCartId());
 			
 			//generic method
 			//Cart cart = new Cart();
@@ -117,14 +117,7 @@ public class OrderController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	@GetMapping("/cancel-order")
 	public OrderStatus cancelOrder(@RequestParam("orderId") int id) {
 		Order o = orderServiceInterface.deleteOrder(id);

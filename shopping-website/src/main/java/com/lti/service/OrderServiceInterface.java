@@ -7,7 +7,7 @@ public interface OrderServiceInterface {
 
 	public int addOrder(Order order);
 	
-	public Cart deleteCartEg(int id);
+	public int deleteCart(int id);
 	
 	public Order deleteOrder(int id);
 		

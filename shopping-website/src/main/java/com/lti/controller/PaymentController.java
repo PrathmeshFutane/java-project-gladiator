@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.PaymentStatus;
+import com.lti.entity.Order;
 import com.lti.entity.Payment;
 import com.lti.exception.PaymentServiceException;
 import com.lti.service.PaymentService;
@@ -28,6 +29,9 @@ public class PaymentController {
 	@PostMapping("/add-payment")
 	public PaymentStatus addPayment(@RequestBody Payment payment) {
 		try {
+			Order order = new Order();
+			payment.setBillAmount(order.getTotalPrice());
+			
 			int id = paymentServiceInterface.addPayment(payment);
 			PaymentStatus status = new PaymentStatus();
 			status.setStatus(true);
