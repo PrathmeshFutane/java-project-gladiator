@@ -78,30 +78,8 @@ public class OrderController {
 			order.setOrderItems(list);
 			int id = orderServiceInterface.addOrder(order);
 			
-			//orderRepository.delete(Cart.class, 10000);
-			
-			  
-			
-			//CartItemRepository
-//			cartItemRepository.deleteCart(c.getCartId());
-//			System.out.println("delete done");
-			
-			//GenericRepository
-//			cartRepository.delete(Cart.class, c.getCartId());
-//			System.out.println("delete done");public CartItemStatus deleteCart(@RequestBody CartItem cartItems) {
-			
-			//cart delete 
-			//Cart cart = new Cart();
-			System.out.println("----------------------"+order.getCustomer().getCustomerId());
-			
-			//jpql method
-			//orderServiceInterface.deleteCart(c.getCartId());
-			
-			//generic method
-			//Cart cart = new Cart();
-			//Cart ca = orderServiceInterface.deleteCartEg(c.getCartId());
+			orderServiceInterface.deleteCart(c.getCartId());
 		
-			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
 			status.setMessage("Order Added successful!");
