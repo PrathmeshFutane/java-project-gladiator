@@ -121,12 +121,6 @@ public class ProductController {
 			return products;
 	}
 	
-	
-	
-	
-	
-	
-	
 	//get product by category
 	@GetMapping("/get-products-by-category")
 	public List<Product> getAllProductByCategory(@RequestParam("categoryId") int categoryId){
@@ -134,6 +128,21 @@ public class ProductController {
 		return products;
 		
 	}
+	
+	
+	@GetMapping("/search")
+	public List<Product> check(@RequestParam("keyword") String keyword) {
+		List<Product> products = productServiceInterface.getByKeyword(keyword);
+		return products;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
 			
 			

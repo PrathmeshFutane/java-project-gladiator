@@ -39,6 +39,19 @@ public class ProductService implements ProductServiceInterface{
 	public List<Product> getProductByCategory(int categoryId) {
 		return productRepository.fetchByCategory(categoryId);		
 	}
+	
+	
+	public List<Product> getByKeyword(String keyword){
+		return productRepository.fetchByKeyword(keyword);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

@@ -13,4 +13,6 @@ public interface ProductServiceInterface {
 	public List<Product> fetchProducts();
 	
 	public List<Product> getProductByCategory(int categoryId);
+	
+	public List<Product> getByKeyword(String keyword);
 }

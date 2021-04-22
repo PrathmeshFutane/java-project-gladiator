@@ -23,4 +23,26 @@ public class ProductRepository extends GenericRepository{
 								.getResultList();
 		return list;
 	}
+	
+	
+	public List<Product> fetchByKeyword(String keyword){
+		return entityManager
+				.createQuery("select p from Product p where p.productDescription like :keyword")
+				.setParameter("keyword", "%"+keyword+"%")
+				.getResultList();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
