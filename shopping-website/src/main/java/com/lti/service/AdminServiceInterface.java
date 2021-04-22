@@ -17,4 +17,6 @@ public interface AdminServiceInterface {
 	public List<Customer> getTotalCustomer();
 	
 	public List<Retailer> getTotalRetailer();
+	
+	public Retailer updateRetailerStatus(Retailer retailer);
 }

@@ -43,5 +43,25 @@ public class AdminRepository extends GenericRepository{
 				.getResultList();
 	}
 	
+	
+//	public int updateRetailerStatus(int id) {
+//		return (Integer)
+//				entityManager
+//				.createQuery("update Retailer r set r.accountStatus = 'Y' where r.retailerId = :retailerId ")
+//				.setParameter("retailerId", id)
+//				.getSingleResult();
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

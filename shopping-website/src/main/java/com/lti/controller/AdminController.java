@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.AdminStatus;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
+import com.lti.dto.RetailerRegisterStatus;
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
 import com.lti.entity.Retailer;
 import com.lti.exception.AdminServiceException;
+import com.lti.repository.RetailerRepository;
 import com.lti.service.AdminServiceInterface;
+import com.lti.service.RetailerServiceInterface;
 
 @RestController
 @CrossOrigin
@@ -25,6 +28,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminServiceInterface adminServiceInterface;
+	
+	@Autowired
+	private RetailerRepository retailerRepository;
 	
 	@PostMapping("/admin-register")
 	public AdminStatus registerAdmin(@RequestBody Admin admin) {
@@ -85,7 +91,16 @@ public class AdminController {
 	}
 	
 	
-	
+	@PostMapping("/admin-approve-retailer")
+	public RetailerRegisterStatus updateRetailerStatus(@RequestBody Retailer retailer) {
+		Retailer retailer1 = retailerRepository.fetch(Retailer.class, retailer.getRetailerId());
+		retailer1.setRetailerStatus('Y');
+		adminServiceInterface.updateRetailerStatus(retailer1);
+		RetailerRegisterStatus status = new RetailerRegisterStatus();
+		status.setStatus(true);
+		status.setMessage("Retailer approved successfully");
+		return status;
+	}
 	
 	
 	

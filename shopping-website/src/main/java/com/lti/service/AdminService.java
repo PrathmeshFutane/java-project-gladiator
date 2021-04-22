@@ -61,5 +61,15 @@ public class AdminService implements AdminServiceInterface{
 	}
 	
 	
+//	public int updateRetailerStatus(int id) {
+//		return adminRepository.updateRetailerStatus(id);
+//	}
+	
+	
+	public Retailer updateRetailerStatus(Retailer retailer) {
+		return (Retailer) adminRepository.save(retailer);
+	}
+	
+	
 }
 

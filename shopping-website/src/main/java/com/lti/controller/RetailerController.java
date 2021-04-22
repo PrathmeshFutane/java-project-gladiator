@@ -32,7 +32,7 @@ public class RetailerController {
 		try {
 			//int otp = customer.getOtp();
 			//int genOtp = session.getAttribute("otp");
-			
+			retailer.setRetailerStatus('N');
 			int id = retailerServiceInterface.register(retailer);
 			RetailerRegisterStatus status = new RetailerRegisterStatus();
 			status.setStatus(true);
