@@ -20,10 +20,12 @@ import com.lti.entity.Customer;
 import com.lti.entity.Order;
 import com.lti.entity.OrderItem;
 import com.lti.entity.Product;
+import com.lti.entity.Retailer;
 import com.lti.exception.CartServiceException;
 import com.lti.repository.CartItemRepository;
 import com.lti.repository.CartRepository;
 import com.lti.repository.OrderRepository;
+import com.lti.repository.RetailerRepository;
 import com.lti.service.CartItemServiceInterface;
 import com.lti.service.OrderItemServiceInterface;
 import com.lti.service.OrderServiceInterface;
@@ -44,10 +46,14 @@ public class OrderController {
 	@Autowired
 	private CartItemRepository cartItemRepository;
 	
+	@Autowired
+	private RetailerRepository retailerRepository;
+	
 	@PostMapping("/place-order")
 	public OrderStatus placeOrder(@RequestBody Order order) {
 		try {
 			int finalTotal = 0;
+			int totalRevenue = 0;
 			LocalDate today = LocalDate.now(); 
 			order.setOrderDate(today);
 			order.setDeliveryDate(today.plusDays(5));
@@ -67,6 +73,15 @@ public class OrderController {
 				product.setStock(finalQuantity);
 				
 				int total = product.getUnitPrice() * orderItems.getQuantity();
+				
+				//this is logic of revenue for particular retailer
+				int retailerId = orderItems.getProduct().getRetailer().getRetailerId();
+				totalRevenue = totalRevenue + total;
+				
+				Retailer retailer = retailerRepository.fetch(Retailer.class, retailerId);
+				retailer.setRevenue(totalRevenue);
+				//end for retailer revenue
+				
 				orderItems.setSubTotalPrice(total);
 				orderItems.setOrder(order);
 				list.add(orderItems);
