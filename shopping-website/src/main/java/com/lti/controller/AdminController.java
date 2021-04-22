@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,8 @@ import com.lti.dto.AdminStatus;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.entity.Admin;
+import com.lti.entity.Customer;
+import com.lti.entity.Retailer;
 import com.lti.exception.AdminServiceException;
 import com.lti.service.AdminServiceInterface;
 
@@ -63,6 +67,29 @@ public class AdminController {
 	public Admin profile(@RequestParam("adminId") int id) {
 		Admin admin = adminServiceInterface.getAdminProfile(id);
 		return admin;
-		
 	}
+	
+	
+	
+	
+	@GetMapping("/admin-get-total-customer")
+	public List<Customer> getTotalCustomer() {
+		return adminServiceInterface.getTotalCustomer();
+	}
+	
+	
+	
+	@GetMapping("/admin-get-total-retailer")
+	public List<Retailer> getTotalRetailer(){
+		return adminServiceInterface.getTotalRetailer();
+	}
+	
+	
+	
+	
+	
+	
+	
 }
+
+	

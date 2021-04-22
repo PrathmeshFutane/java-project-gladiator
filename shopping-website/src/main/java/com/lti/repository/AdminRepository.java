@@ -1,6 +1,11 @@
 package com.lti.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
+import com.lti.entity.Customer;
+import com.lti.entity.Retailer;
 
 @Repository
 public class AdminRepository extends GenericRepository{
@@ -21,5 +26,22 @@ public class AdminRepository extends GenericRepository{
 				.setParameter("pw", password)
 				.getSingleResult();
 	}
+	
+	
+	public List<Customer> fetchTotalCustomer() {
+	   return 
+			   entityManager
+			   .createQuery("select c from Customer c")
+			   .getResultList();
+	}
+	
+	
+	public List<Retailer> fetchTotalRetailer() {
+		return 
+				entityManager
+				.createQuery("select r from Retailer r")
+				.getResultList();
+	}
+	
 
 }

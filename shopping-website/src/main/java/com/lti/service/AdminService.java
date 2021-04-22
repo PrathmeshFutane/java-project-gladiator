@@ -1,6 +1,7 @@
 package com.lti.service;
 
 import java.util.Base64;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -9,6 +10,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Admin;
+import com.lti.entity.Customer;
+import com.lti.entity.Retailer;
 import com.lti.exception.AdminServiceException;
 import com.lti.repository.AdminRepository;
 
@@ -46,5 +49,17 @@ public class AdminService implements AdminServiceInterface{
 	public Admin getAdminProfile(int id) {
 		return adminRepository.fetch(Admin.class, id);
 	}
+	
+	
+	public List<Customer> getTotalCustomer(){
+		return adminRepository.fetchTotalCustomer();
+	}
+	
+	
+	public List<Retailer> getTotalRetailer(){
+		return adminRepository.fetchTotalRetailer();
+	}
+	
+	
 }
 
