@@ -38,6 +38,9 @@ public class Product {
 	private int unitPrice;
 	private String image;
 	
+	
+	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;

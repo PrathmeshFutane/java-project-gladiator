@@ -45,14 +45,18 @@ public class ProductService implements ProductServiceInterface{
 		return productRepository.fetchByKeyword(keyword);
 	}
 	
+	public List<Product> getByRange(int price1, int price2) {
+		return productRepository.fetchByRange(price1, price2);
+	}
 	
-	
-	
-	
-	
-	
-	
+
 }
+	
+	
+	
+	
+	
+
 
 
 

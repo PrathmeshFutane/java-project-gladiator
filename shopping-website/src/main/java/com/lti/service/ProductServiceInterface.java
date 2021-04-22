@@ -15,4 +15,8 @@ public interface ProductServiceInterface {
 	public List<Product> getProductByCategory(int categoryId);
 	
 	public List<Product> getByKeyword(String keyword);
+	
+	public List<Product> getByRange(int price1, int price2);
+	
+
 }

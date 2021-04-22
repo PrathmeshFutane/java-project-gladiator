@@ -137,9 +137,11 @@ public class ProductController {
 	}
 	
 	
-	
-	
-	
+	@GetMapping("/product-filter")
+	public List<Product> filter(@RequestParam("price1") int price1 , @RequestParam("price2") int price2) {
+		List<Product> products = productServiceInterface.getByRange(price1, price2);
+		return products;
+	}
 	
 	
 	
