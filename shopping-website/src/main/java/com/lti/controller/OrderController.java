@@ -74,19 +74,23 @@ public class OrderController {
 				
 				int total = product.getUnitPrice() * orderItems.getQuantity();
 				
-				//this is logic of revenue for particular retailer
-				int retailerId = orderItems.getProduct().getRetailer().getRetailerId();
-				totalRevenue = totalRevenue + total;
 				
-				Retailer retailer = retailerRepository.fetch(Retailer.class, retailerId);
-				retailer.setRevenue(totalRevenue);
-				//end for retailer revenue
 				
 				orderItems.setSubTotalPrice(total);
 				orderItems.setOrder(order);
 				list.add(orderItems);
 				
 				finalTotal = finalTotal + total;
+				
+				//The corrected revenue generated for retailers after a customer places an order and make payment.
+				
+				int retailerId = orderItems.getProduct().getRetailer().getRetailerId();
+				totalRevenue= totalRevenue + total;
+				
+				Retailer retailer = retailerRepository.fetch(Retailer.class, retailerId);
+				retailer.setRevenue(totalRevenue);
+				
+				//end of retailer revenue logic
 				
 			}
 			order.setTotalPrice(finalTotal);
