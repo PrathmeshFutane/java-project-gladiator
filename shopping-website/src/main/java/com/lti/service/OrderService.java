@@ -41,7 +41,18 @@ public class OrderService implements OrderServiceInterface{
 		return orderRepository.deleteCart(id);
 	}
 
+	public List<Order> getOrderByCustomerId(int customerId){
+		return orderRepository.fetchOrderByCustomerId(customerId);
+		
+	}
+	
+	public Order cancelOrder(Order order) {
+		return (Order) orderRepository.save(order);
+	}
+	
+	public Order confirmOrder(Order order) {
+		return (Order) orderRepository.save(order);
+	}
+	}
+	
 
-	
-	
-}

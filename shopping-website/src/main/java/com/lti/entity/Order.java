@@ -40,7 +40,7 @@ public class Order {
 	private LocalDate deliveryDate;
 	
 	@Column(name = "order_status")
-	private char orderStatus;
+	private String orderStatus;
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
@@ -79,11 +79,13 @@ public class Order {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public char getOrderStatus() {
+	
+
+	public String getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setOrderStatus(char orderStatus) {
+	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 
