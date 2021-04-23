@@ -37,7 +37,7 @@ public class ProductRepository extends GenericRepository{
 				.createQuery("select p from Product p where p.unitPrice >= :price1 and p.unitPrice <= :price2")
 				.setParameter("price1",price1)
 				.setParameter("price2",price2)
-				.getResultList();
+				.getResultList();					
 	}
 	
 

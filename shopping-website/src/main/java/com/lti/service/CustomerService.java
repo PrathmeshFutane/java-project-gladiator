@@ -52,5 +52,9 @@ public class CustomerService  implements CustomerServiceInterface {
 		return customerRepository.fetch(Customer.class, id);
 	}
 	
+	public Customer updateCustomer(Customer customer){
+		return (Customer) customerRepository.save(customer);
+	}
+	
 	
 }

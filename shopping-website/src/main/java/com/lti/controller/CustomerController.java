@@ -14,6 +14,7 @@ import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RegisterStatus;
 import com.lti.dto.SendEmail;
+import com.lti.dto.Status;
 import com.lti.entity.Cart;
 import com.lti.entity.Customer;
 import com.lti.exception.CustomerServiceException;
@@ -95,6 +96,23 @@ public class CustomerController {
 	public Customer profile(@RequestParam("customerId") int id) {
 		Customer customer = customerServiceInterface.getCustomerProfile(id);
 		return customer;
+	}
+	
+	
+	@PostMapping("/update-customer")
+		public Status updateCustomer(@RequestBody Customer customer) {
+		Customer newCustomer = customerRepository.fetch(Customer.class, customer.getCustomerId());
+
+		newCustomer.setName(customer.getName());
+		newCustomer.setAddress1(customer.getAddress1());
+		newCustomer.setAddress2(customer.getAddress2());
+		
+
+		customerServiceInterface.updateCustomer(newCustomer);
+		Status status = new Status();
+		status.setStatus(true);
+		status.setMessage("Customer updated successfully!");
+		return status;
 	}
 	
 	

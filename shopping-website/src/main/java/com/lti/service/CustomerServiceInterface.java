@@ -13,4 +13,5 @@ public interface CustomerServiceInterface {
 	
 	public Customer getCustomerProfile(int id);
 	
+	public Customer updateCustomer(Customer customer);
 }
