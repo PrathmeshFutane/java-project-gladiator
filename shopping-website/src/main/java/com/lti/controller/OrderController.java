@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.CartItemStatus;
 import com.lti.dto.OrderStatus;
+import com.lti.dto.RetailerRegisterStatus;
 import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
 import com.lti.entity.Customer;
@@ -57,7 +58,7 @@ public class OrderController {
 			LocalDate today = LocalDate.now(); 
 			order.setOrderDate(today);
 			order.setDeliveryDate(today.plusDays(5));
-			order.setOrderStatus('Y');			
+			order.setOrderStatus("Pending");			
 			
 			int customerId =  order.getCustomer().getCustomerId();
 			Cart c = cartRepository.fetchByCart(customerId);
@@ -115,14 +116,45 @@ public class OrderController {
 	
 	
 		
-	@GetMapping("/cancel-order")
-	public OrderStatus cancelOrder(@RequestParam("orderId") int id) {
-		Order o = orderServiceInterface.deleteOrder(id);
-		//return ci.getCartItemId();
+//	@GetMapping("/cancel-order")
+//	public OrderStatus cancelOrder(@RequestParam("orderId") int id) {
+//		Order o = orderServiceInterface.deleteOrder(id);
+//		//return ci.getCartItemId();
+//		OrderStatus status = new OrderStatus();
+//		status.setStatus(true);
+//		status.setMessage("Order cancelled successfully!");
+//		//status.setRegisteredCartItemId(id);
+//		return status;
+//	}
+	
+	
+	
+	@GetMapping("/get-order-by-customer")
+	public List<Order> getAllOrderByCustomer(@RequestParam("customerId") int customerId){
+		List<Order> orders = orderServiceInterface.getOrderByCustomerId(customerId);
+		return orders;
+	}
+	
+	@PostMapping("/cancel-order")
+	public OrderStatus cancelOrder(@RequestBody Order order) {
+		Order o = orderRepository.fetch(Order.class, order.getOrderId());
+		o.setOrderStatus("Cancelled");
+		orderServiceInterface.cancelOrder(o);
 		OrderStatus status = new OrderStatus();
 		status.setStatus(true);
-		status.setMessage("Order cancelled successfully!");
-		//status.setRegisteredCartItemId(id);
+		status.setMessage("Order confirmed successfully");
 		return status;
 	}
+	
+	@PostMapping("/confirm-order")
+	public OrderStatus confirmOrder(@RequestBody Order order) {
+		Order o = orderRepository.fetch(Order.class, order.getOrderId());
+		o.setOrderStatus("Confirmed");
+		orderServiceInterface.confirmOrder(o);
+		OrderStatus status = new OrderStatus();
+		status.setStatus(true);
+		status.setMessage("Order confirmed successfully");
+		return status;
+	}
+	
 }

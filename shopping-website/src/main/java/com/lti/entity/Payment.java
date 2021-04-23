@@ -6,6 +6,8 @@
 
 package com.lti.entity;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +45,13 @@ public class Payment {
 	
 	private int cvv;
 	
+	@Column(name = "payment_mode")
+	private String paymentMode;
+	
+	@Column(name = "name_on_card")
+	private String nameOnCard;
+	
+	
 	@OneToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
@@ -77,6 +86,8 @@ public class Payment {
 		this.cardNumber = cardNumber;
 	}
 
+	
+
 	public int getExpiryMonth() {
 		return expiryMonth;
 	}
@@ -91,6 +102,22 @@ public class Payment {
 
 	public void setExpiryYear(int expiryYear) {
 		this.expiryYear = expiryYear;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+
+	public void setNameOnCard(String nameOnCard) {
+		this.nameOnCard = nameOnCard;
 	}
 
 	public int getCvv() {
