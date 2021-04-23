@@ -18,5 +18,7 @@ public interface ProductServiceInterface {
 	
 	public List<Product> getByRange(int price1, int price2);
 	
-
+	public List<Product> getByAscending();
+	
+	public List<Product> getByDescending();
 }

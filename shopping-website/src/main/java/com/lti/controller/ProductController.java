@@ -143,7 +143,17 @@ public class ProductController {
 		return products;
 	}
 	
+	@GetMapping("/ascending-order")
+	public List<Product> ascendingOrder() {
+		List<Product> products = productServiceInterface.getByAscending();
+		return products;
+	}
 	
+	@GetMapping("/descending-order")
+	public List<Product> descendingOrder() {
+		List<Product> products = productServiceInterface.getByDescending();
+		return products;
+	}
 	
 }
 			

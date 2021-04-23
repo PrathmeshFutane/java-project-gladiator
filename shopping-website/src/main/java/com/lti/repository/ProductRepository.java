@@ -40,12 +40,17 @@ public class ProductRepository extends GenericRepository{
 				.getResultList();
 	}
 	
-
+	public List<Product> fetchByAscending(){
+		return entityManager
+				.createQuery("select p from Product p order by p.unitPrice asc")
+				.getResultList();
+	}	
 	
-	
-	
-	
-	
+	public List<Product> fetchByDescending(){
+		return entityManager
+				.createQuery("select p from Product p order by p.unitPrice desc")
+				.getResultList();
+	}	
 	
 	
 }

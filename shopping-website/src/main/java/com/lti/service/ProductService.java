@@ -50,6 +50,14 @@ public class ProductService implements ProductServiceInterface{
 	}
 	
 
+	public List<Product> getByAscending(){
+		return productRepository.fetchByAscending();
+	}
+	
+	public List<Product> getByDescending(){
+		return productRepository.fetchByDescending();
+	}
+	
 }
 	
 	
