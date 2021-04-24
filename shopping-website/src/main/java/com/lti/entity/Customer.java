@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,11 +46,13 @@ public class Customer {
 	@JsonIgnore
 	private Cart cart;
 	
-	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "payment_id")
 	@JsonIgnore
 	private  Payment payment;
 	
+//	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
+//	private List<Payment> payments;
 	
 	
 //	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
@@ -139,13 +142,19 @@ public class Customer {
 		this.payment = payment;
 	}
 
-//	public List<Order> getOrders() {
-//		return orders;
+	
+
+	
+	
+//	public Payment getPayment() {
+//		return payment;
 //	}
 //
-//	public void setOrders(List<Order> orders) {
-//		this.orders = orders;
+//	public void setPayment(Payment payment) {
+//		this.payment = payment;
 //	}
+
+
 
 	
 
