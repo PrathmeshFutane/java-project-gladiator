@@ -57,6 +57,7 @@ public class RetailerController {
 			loginStatus.setMessage("Login successful!");
 			loginStatus.setId(retailer.getRetailerId());
 			loginStatus.setName(retailer.getOwnerName());
+			
 			return loginStatus;
 		}
 		catch(RetailerServiceException e) {
