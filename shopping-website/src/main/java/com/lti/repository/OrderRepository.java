@@ -29,6 +29,14 @@ public class OrderRepository extends GenericRepository{
 		return list;
 	}
 	
+//	public List<Order> fetchOrderByCustomerId(int customerId) {
+//		List<Order> list = entityManager
+//				.createQuery("select o from Order o where o.customer.customerId= :customerId and o.status= confirmed")
+//				.setParameter("customerId",customerId)
+//				.getResultList();
+//		return list;
+//	}
+	
 	
 	
 }
