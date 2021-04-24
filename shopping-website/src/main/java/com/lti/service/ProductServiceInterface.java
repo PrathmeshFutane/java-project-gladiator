@@ -21,4 +21,6 @@ public interface ProductServiceInterface {
 	public List<Product> getByAscending();
 	
 	public List<Product> getByDescending();
+	
+	public Product updateStock(Product product);
 }

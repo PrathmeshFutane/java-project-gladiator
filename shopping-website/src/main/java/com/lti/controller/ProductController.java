@@ -16,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.CartItemStatus;
 import com.lti.dto.ImageStatus;
 import com.lti.dto.ProductImage;
 import com.lti.dto.ProductStatus;
 import com.lti.dto.RegisterStatus;
+import com.lti.dto.RetailerRegisterStatus;
 import com.lti.entity.Category;
 import com.lti.entity.Product;
 import com.lti.exception.CategoryServiceException;
 import com.lti.exception.ProductServiceException;
+import com.lti.repository.ProductRepository;
 import com.lti.service.CategoryService;
 import com.lti.service.ProductService;
 import com.lti.service.ProductServiceInterface;
@@ -36,6 +39,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductServiceInterface productServiceInterface;
+	
+	@Autowired
+	private ProductRepository productRepository;
 	
 	@PostMapping("/add-product")
 	public ProductStatus addProduct(@RequestBody Product product) {
@@ -153,6 +159,20 @@ public class ProductController {
 	public List<Product> descendingOrder() {
 		List<Product> products = productServiceInterface.getByDescending();
 		return products;
+	}
+	
+
+	@PostMapping("/update-stock")
+	public ProductStatus updateStock(@RequestBody Product product) {
+		
+		Product product1 = productRepository.fetch(Product.class,product.getProductId());
+		product1.setStock(product.getStock());
+		productServiceInterface.updateStock(product1);
+		ProductStatus status = new ProductStatus();
+		status.setStatus(true);
+		status.setMessage("Stock updated successfully!");
+		return status;
+		
 	}
 	
 }
