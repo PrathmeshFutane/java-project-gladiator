@@ -6,12 +6,11 @@ public class LoginStatus extends Status {
 	private String name;
 	private int cartId;
 	private char approvalStatus;
-	//private Customer customer;
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
