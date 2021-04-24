@@ -11,5 +11,5 @@ public interface OrderItemServiceInterface {
 	
 	public List<OrderItem> fetchOrderItems(int orderId);	
 	
-	
+	public List<OrderItem> getOrderItemByOrderId(int orderId);
 }

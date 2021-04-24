@@ -33,6 +33,10 @@ public class OrderItemService implements OrderItemServiceInterface{
 	public List<OrderItem> fetchOrderItems(int orderId) {
 		return orderItemRepository.fetchAllOrderItem(orderId);
 	}
+	
+	public List<OrderItem> getOrderItemByOrderId(int orderId){
+		return orderItemRepository.fetchOrderItemByOrderId(orderId);
+	}
 
 }
 	
