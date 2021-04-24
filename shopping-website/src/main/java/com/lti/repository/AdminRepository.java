@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.lti.entity.Customer;
+import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 
 @Repository
@@ -52,12 +53,7 @@ public class AdminRepository extends GenericRepository{
 //				.getSingleResult();
 //	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

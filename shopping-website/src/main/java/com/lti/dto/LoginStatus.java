@@ -5,13 +5,15 @@ public class LoginStatus extends Status {
 	private int id;
 	private String name;
 	private int cartId;
+	
 	//private Customer customer;
 	
 	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
