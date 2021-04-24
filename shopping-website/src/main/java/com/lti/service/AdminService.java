@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
+import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 import com.lti.exception.AdminServiceException;
 import com.lti.repository.AdminRepository;
@@ -69,7 +70,8 @@ public class AdminService implements AdminServiceInterface{
 	public Retailer updateRetailerStatus(Retailer retailer) {
 		return (Retailer) adminRepository.save(retailer);
 	}
-	
+
+
 	
 }
 

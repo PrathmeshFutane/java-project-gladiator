@@ -104,8 +104,16 @@ public class AdminController {
 	}
 	
 	
-	
-	
+	@PostMapping("/admin-reject-retailer")
+	public RetailerRegisterStatus rejectRetailerStatus(@RequestBody Retailer retailer) {
+		Retailer retailer1 = retailerRepository.fetch(Retailer.class, retailer.getRetailerId());
+		retailer1.setRetailerStatus('N');
+		adminServiceInterface.updateRetailerStatus(retailer1);
+		RetailerRegisterStatus status = new RetailerRegisterStatus();
+		status.setStatus(true);
+		status.setMessage("Retailer rejected successfully");
+		return status;
+	}
 	
 }
 

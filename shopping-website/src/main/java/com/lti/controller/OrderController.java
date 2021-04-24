@@ -142,7 +142,7 @@ public class OrderController {
 		orderServiceInterface.cancelOrder(o);
 		OrderStatus status = new OrderStatus();
 		status.setStatus(true);
-		status.setMessage("Order confirmed successfully");
+		status.setMessage("Order cancelled successfully");
 		return status;
 	}
 	

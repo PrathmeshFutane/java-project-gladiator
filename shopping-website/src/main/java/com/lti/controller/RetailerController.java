@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.CartItemStatus;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RetailerRegisterStatus;
+import com.lti.entity.CartItem;
 import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 
 import com.lti.exception.RetailerServiceException;
+import com.lti.repository.RetailerRepository;
 import com.lti.service.RetailerServiceInterface;
 
 @RestController
@@ -25,7 +28,6 @@ public class RetailerController {
 	
 	@Autowired
 	private RetailerServiceInterface retailerServiceInterface;
-
 	
 	@PostMapping("/register-retailer")
 	public RetailerRegisterStatus registerRetailer(@RequestBody Retailer retailer) {
@@ -57,6 +59,7 @@ public class RetailerController {
 			loginStatus.setMessage("Login successful!");
 			loginStatus.setId(retailer.getRetailerId());
 			loginStatus.setName(retailer.getOwnerName());
+			loginStatus.setApprovalStatus(retailer.getRetailerStatus());
 			return loginStatus;
 		}
 		catch(RetailerServiceException e) {
@@ -73,4 +76,6 @@ public class RetailerController {
 		return products;
 		
 	}
+	
+	
 }

@@ -5,13 +5,12 @@ public class LoginStatus extends Status {
 	private int id;
 	private String name;
 	private int cartId;
-	//private Customer customer;
-	
-	
+	private char approvalStatus;
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -31,6 +30,16 @@ public class LoginStatus extends Status {
 	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
+
+	public char getApprovalStatus() {
+		return approvalStatus;
+	}
+
+	public void setApprovalStatus(char approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
+	
+	
 	
 	
 }

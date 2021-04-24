@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lti.entity.Product;
+import com.lti.entity.Retailer;
 import com.lti.repository.ProductRepository;
 
 @Service
@@ -56,6 +57,11 @@ public class ProductService implements ProductServiceInterface{
 	
 	public List<Product> getByDescending(){
 		return productRepository.fetchByDescending();
+	}
+	
+	public Product updateStock(Product product) {
+		return (Product) productRepository.save(product);
+		
 	}
 	
 }
