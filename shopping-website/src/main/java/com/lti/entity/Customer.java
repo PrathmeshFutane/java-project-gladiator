@@ -46,7 +46,7 @@ public class Customer {
 	@JsonIgnore
 	private Cart cart;
 	
-	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
 	@JoinColumn(name = "payment_id")
 	@JsonIgnore
 	private  Payment payment;

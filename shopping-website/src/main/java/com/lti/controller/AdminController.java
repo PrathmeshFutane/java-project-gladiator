@@ -15,6 +15,7 @@ import com.lti.dto.AdminStatus;
 import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RetailerRegisterStatus;
+import com.lti.dto.SendEmail;
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
 import com.lti.entity.Retailer;
@@ -97,6 +98,17 @@ public class AdminController {
 		Retailer retailer1 = retailerRepository.fetch(Retailer.class, retailer.getRetailerId());
 		retailer1.setRetailerStatus('Y');
 		adminServiceInterface.updateRetailerStatus(retailer1);
+		
+		//mail for approval of retailer
+		System.out.println("preparing to send message ...");
+		String message = "Congratulation ! \n You have been approved by webrash \n now you can login in through your email id and password";
+		String subject = "Approval from Admin";
+		String to = retailer.getEmail();
+		String from = "webrashlti@gmail.com";
+		
+		SendEmail sendEmail = new SendEmail();
+		sendEmail.sendEmail(message,subject,to,from);
+		
 		RetailerRegisterStatus status = new RetailerRegisterStatus();
 		status.setStatus(true);
 		status.setMessage("Retailer approved successfully");

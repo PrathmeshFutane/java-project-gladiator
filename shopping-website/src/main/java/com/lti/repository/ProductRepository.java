@@ -53,4 +53,16 @@ public class ProductRepository extends GenericRepository{
 	}	
 	
 	
+	 
+	 public List<Product> listOfRandomProducts(){
+			return (List<Product>) entityManager
+					.createQuery("select p from Product p where id=:id")
+					.setParameter("id", Math.floor(Math.random()*10000000))
+					.getResultList();
+	}
+	 
+	 
+	
+	
+	
 }

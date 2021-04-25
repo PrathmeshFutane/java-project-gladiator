@@ -23,4 +23,6 @@ public interface ProductServiceInterface {
 	public List<Product> getByDescending();
 	
 	public Product updateStock(Product product);
+	
+	public List<Product> randomProducts();
 }

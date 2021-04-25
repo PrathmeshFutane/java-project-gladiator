@@ -64,6 +64,12 @@ public class ProductService implements ProductServiceInterface{
 		
 	}
 	
+	public List<Product> randomProducts(){
+		return productRepository.listOfRandomProducts();
+	}
+	
+	
+	
 }
 	
 	

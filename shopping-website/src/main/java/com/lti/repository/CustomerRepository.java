@@ -22,4 +22,12 @@ public class CustomerRepository extends GenericRepository {
 				.getSingleResult();
 	
 	}
+	
+	public int fetchByEmail(String email) {
+		return (Integer)
+				entityManager
+				.createQuery("select c.id from Customer c where c.email = :em")
+				.setParameter("em",email)
+				.getSingleResult();
+	}
 }

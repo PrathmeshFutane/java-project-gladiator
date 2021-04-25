@@ -45,17 +45,7 @@ public class CustomerController {
 			status.setRegisteredCustomerId(id);
 			
 //			Cart cart = new Cart()
-//			int cid = CartServiceInterface.addCart(cart);
-			
-//			send email
-//			System.out.println("preparing to send message ...");
-//			String message = "Welcome to webrash";
-//			String subject = "Thank you for registration";
-//			String to = customer.getEmail();
-//			String from = "webrashlti@gmail.com";
-//			
-//			SendEmail send = new SendEmail();
-//			send.sendEmail(message,subject,to,from);
+//			int cid = CartServiceInterface.addCart(cart);			
 			
 			return status;
 		}
@@ -114,6 +104,9 @@ public class CustomerController {
 		status.setMessage("Customer updated successfully!");
 		return status;
 	}
+	
+	
+	
 	
 	
 }

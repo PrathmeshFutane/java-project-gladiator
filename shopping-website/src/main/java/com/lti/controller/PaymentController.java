@@ -16,6 +16,7 @@ import com.lti.dto.PaymentStatus;
 import com.lti.entity.Order;
 import com.lti.entity.Payment;
 import com.lti.exception.PaymentServiceException;
+import com.lti.repository.OrderRepository;
 import com.lti.service.PaymentService;
 import com.lti.service.PaymentServiceInterface;
 
@@ -26,10 +27,14 @@ public class PaymentController {
 	@Autowired
 	private PaymentServiceInterface paymentServiceInterface;
 	
+	@Autowired
+	private OrderRepository orderRepository;
+	
 	@PostMapping("/add-payment")
 	public PaymentStatus addPayment(@RequestBody Payment payment) {
 		try {
-			Order order = new Order();
+			
+			Order order = orderRepository.fetch(Order.class, payment.getOrder().getOrderId());
 			payment.setBillAmount(order.getTotalPrice());
 			
 			int id = paymentServiceInterface.addPayment(payment);

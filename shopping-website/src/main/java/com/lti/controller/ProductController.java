@@ -175,6 +175,12 @@ public class ProductController {
 		
 	}
 	
+	
+	@GetMapping("/random-products")
+	public List<Product> randomProducts(){
+		return productServiceInterface.randomProducts();
+	}
+	
 }
 			
 			

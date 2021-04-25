@@ -12,4 +12,6 @@ public interface RetailerServiceInterface {
 	public int register(Retailer retailer);
 	
 	public List<Product> getProductsByRetailerId(int retailerId);
+	
+	public Retailer getRetailerProfile(int id);
 }

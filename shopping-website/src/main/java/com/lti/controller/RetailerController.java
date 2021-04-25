@@ -15,6 +15,7 @@ import com.lti.dto.Login;
 import com.lti.dto.LoginStatus;
 import com.lti.dto.RetailerRegisterStatus;
 import com.lti.entity.CartItem;
+import com.lti.entity.Customer;
 import com.lti.entity.Product;
 import com.lti.entity.Retailer;
 
@@ -75,6 +76,13 @@ public class RetailerController {
 		List<Product> products =  retailerServiceInterface.getProductsByRetailerId(retailerId);
 		return products;
 		
+	}
+	
+	
+	@GetMapping("/retailer-profile")
+	public Retailer profile(@RequestParam("retailerId") int id) {
+		Retailer retailer = retailerServiceInterface.getRetailerProfile(id);
+		return retailer;
 	}
 	
 	
