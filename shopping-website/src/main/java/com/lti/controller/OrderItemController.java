@@ -1,3 +1,10 @@
+/**
+ * 
+ * @author Shreyash Mhashilkar
+ * This is page responsible for getting all order items
+ *
+ */
+
 package com.lti.controller;
 
 import java.util.List;
@@ -18,12 +25,6 @@ import com.lti.exception.OrderItemServiceException;
 import com.lti.service.OrderItemServiceInterface;
 
 
-/**
- * 
- * @author Shreyash Mhashilkar
- * This is page responsible for getting all order items
- *
- */
 @RestController
 @CrossOrigin
 public class OrderItemController {
