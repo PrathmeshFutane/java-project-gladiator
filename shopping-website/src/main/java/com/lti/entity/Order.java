@@ -50,10 +50,10 @@ public class Order {
 	@JsonIgnore
 	private List<OrderItem> orderItems;
 	
-	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-	@JoinColumn(name = "payment_id")
-	@JsonIgnore
-	private  Payment payment;
+//	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+//	@JoinColumn(name = "payment_id")
+//	@JsonIgnore
+//	private  Payment payment;
 
 	public int getOrderId() {
 		return orderId;
@@ -105,13 +105,7 @@ public class Order {
 		this.totalPrice = totalPrice;
 	}
 
-	public Payment getPayment() {
-		return payment;
-	}
-
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
+	
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;

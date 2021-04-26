@@ -34,6 +34,9 @@ import com.lti.service.OrderServiceInterface;
 @RestController
 @CrossOrigin
 public class OrderController {
+	
+	
+	int totalRevenue = 0;
 
 	@Autowired
 	private OrderServiceInterface orderServiceInterface;
@@ -54,7 +57,6 @@ public class OrderController {
 	public OrderStatus placeOrder(@RequestBody Order order) {
 		try {
 			int finalTotal = 0;
-			int totalRevenue = 0;
 			LocalDate today = LocalDate.now(); 
 			order.setOrderDate(today);
 			order.setDeliveryDate(today.plusDays(5));
@@ -86,10 +88,12 @@ public class OrderController {
 				//The corrected revenue generated for retailers after a customer places an order and make payment.
 				
 				int retailerId = orderItems.getProduct().getRetailer().getRetailerId();
-				totalRevenue= totalRevenue + total;
+				int newRevenue = orderItems.getProduct().getRetailer().getRevenue();
+				newRevenue = newRevenue + total;
+				//totalRevenue= totalRevenue + total;
 				
 				Retailer retailer = retailerRepository.fetch(Retailer.class, retailerId);
-				retailer.setRevenue(totalRevenue);
+				retailer.setRevenue(newRevenue);
 				
 				//end of retailer revenue logic
 				
