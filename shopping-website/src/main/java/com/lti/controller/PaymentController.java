@@ -34,8 +34,8 @@ public class PaymentController {
 	public PaymentStatus addPayment(@RequestBody Payment payment) {
 		try {
 			
-			Order order = orderRepository.fetch(Order.class, payment.getOrder().getOrderId());
-			payment.setBillAmount(order.getTotalPrice());
+//			Order order = orderRepository.fetch(Order.class, payment.getOrder().getOrderId());
+//			payment.setBillAmount(order.getTotalPrice());
 			
 			int id = paymentServiceInterface.addPayment(payment);
 			PaymentStatus status = new PaymentStatus();

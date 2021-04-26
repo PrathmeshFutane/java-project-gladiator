@@ -50,17 +50,17 @@ public class Payment {
 	private String nameOnCard;
 	
 	
-	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
+//	@OneToOne
+//	@JoinColumn(name = "customer_id")
+//	private Customer customer;
 	
 //	@ManyToOne
 //	@JoinColumn(name = "customer_id")
 //	private Customer customer;
 	
-	@OneToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
+//	@OneToOne
+//	@JoinColumn(name = "order_id")
+//	private Order order;
 	
 	public int getPaymentId() {
 		return paymentId;
@@ -131,21 +131,9 @@ public class Payment {
 
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
+	
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+	
 	
 	
 }

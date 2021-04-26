@@ -27,13 +27,9 @@ public class PaymentService implements PaymentServiceInterface {
 	private PaymentRepository paymentRepository;
 	
 	public int addPayment(Payment payment) {
-		if(paymentRepository.isOrderIdPresent(payment.getOrder().getOrderId())) {
-			throw new PaymentServiceException("Payment already done");
-		}
-		else {
-			Payment updatedPayment = (Payment) paymentRepository.save(payment);
-			return updatedPayment.getPaymentId();
-		}		
+		Payment updatedPayment = (Payment) paymentRepository.save(payment);
+		return updatedPayment.getPaymentId();
+			
 	}
 	
 	
