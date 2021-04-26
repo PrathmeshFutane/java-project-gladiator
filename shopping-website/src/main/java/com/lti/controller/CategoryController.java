@@ -1,3 +1,11 @@
+/*
+ * 
+ * @author Muskaan Pansare
+ * This page is responsible for admin related functionalities
+ *
+ * 
+ */
+
 package com.lti.controller;
 
 import java.util.List;
