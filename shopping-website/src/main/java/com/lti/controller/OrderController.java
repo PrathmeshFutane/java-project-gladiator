@@ -103,7 +103,7 @@ public class OrderController {
 			int id = orderServiceInterface.addOrder(order);
 			
 			orderServiceInterface.deleteCart(c.getCartId());
-		
+			
 			OrderStatus status = new OrderStatus();
 			status.setStatus(true);
 			status.setMessage("Order Added successful!");
