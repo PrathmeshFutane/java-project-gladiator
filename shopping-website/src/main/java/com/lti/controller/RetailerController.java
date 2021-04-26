@@ -1,3 +1,10 @@
+/**
+ * Author 
+ * Jeshma M
+ * This is the entity for retailer controller.
+ */
+
+
 package com.lti.controller;
 
 import java.util.List;
