@@ -1,10 +1,3 @@
-
-/**
- * 
- * @author Shreyash Mhashilkar
- * This is page responsible for order related functionality
- *
- */
 package com.lti.controller;
 
 import java.time.LocalDate;
@@ -22,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.dto.CartItemStatus;
 import com.lti.dto.OrderStatus;
 import com.lti.dto.RetailerRegisterStatus;
+import com.lti.dto.SendEmail;
 import com.lti.entity.Cart;
 import com.lti.entity.CartItem;
 import com.lti.entity.Customer;
@@ -162,6 +156,24 @@ public class OrderController {
 		Order o = orderRepository.fetch(Order.class, order.getOrderId());
 		o.setOrderStatus("Confirmed");
 		orderServiceInterface.confirmOrder(o);
+		
+		Customer customer = orderRepository.fetch(Customer.class, order.getCustomer().getCustomerId());
+		
+		
+//		System.out.println("Preparing to send email");
+		String message = "Your order is :"+ o.getOrderId() +"\n Order Date " 
+							+ o.getOrderDate() + "\nShipping Date "
+							+o.getDeliveryDate()
+							+"\n Total Price "
+							+ o.getTotalPrice();	
+		String to = customer.getEmail();
+		String subject = "webrash ! Your Order Details";
+		String from = "webrashlti@gmail.com";
+		SendEmail sendEmail = new SendEmail();
+		sendEmail.sendEmail(message,subject,to,from);
+		
+		
+		
 		OrderStatus status = new OrderStatus();
 		status.setStatus(true);
 		status.setMessage("Order confirmed successfully");

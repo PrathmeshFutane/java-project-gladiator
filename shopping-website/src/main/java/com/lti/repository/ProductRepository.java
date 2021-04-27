@@ -26,8 +26,9 @@ public class ProductRepository extends GenericRepository{
 	
 	
 	public List<Product> fetchByKeyword(String keyword){
+		keyword = keyword.toLowerCase();
 		return entityManager
-				.createQuery("select p from Product p where p.productDescription like :keyword")
+				.createQuery("select p from Product p where lower(p.productDescription) like :keyword")
 				.setParameter("keyword", "%"+keyword+"%")
 				.getResultList();
 	}
