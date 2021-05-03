@@ -29,4 +29,6 @@ public class GenericRepository{
 		entityManager.remove(e);
 		return e;
 	}
+	
+	
 }

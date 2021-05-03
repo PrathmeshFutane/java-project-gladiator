@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.util.Base64;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ import com.lti.service.CustomerServiceInterface;
 @RestController
 @CrossOrigin
 public class CustomerController {
+	
+	int otp = 0;
 	
 	@Autowired
 	private CustomerServiceInterface customerServiceInterface;
@@ -102,6 +106,73 @@ public class CustomerController {
 		Status status = new Status();
 		status.setStatus(true);
 		status.setMessage("Customer updated successfully!");
+		return status;
+	}
+	
+	
+	@PostMapping("/send-otp")
+	public RegisterStatus sendOtp(@RequestBody Customer customer) {
+		RegisterStatus status = new RegisterStatus();
+		try{
+			System.out.println(customer.getEmail());
+			System.out.println("-------"+customer.getCustomerId());
+			int id = customerRepository.fetchByEmail(customer.getEmail());
+			System.out.println("-------"+id);
+			status.setRegisteredCustomerId(id);
+			
+			status.setMessage("Email id Exist");
+			status.setStatus(true);
+			otp = (int) Math.floor(Math.random()*1000000); 
+			System.out.println("from send otp "+otp);
+			
+			//code to send email
+			String message = "OTP is : "+otp;
+			String subject = "change password";
+			String to = customer.getEmail();
+			String from = "webrashlti@gmail.com";
+			
+			SendEmail sendEmail = new SendEmail();
+			sendEmail.sendEmail(message,subject,to,from);
+			
+			return status;
+		}
+		catch(Exception e) {
+			status.setMessage("email not found");
+			status.setStatus(false);
+			return status;
+		}
+			
+		
+	}
+	
+	@GetMapping("/check-otp")
+	public Status checkOtp(@RequestParam("otp") int otp) {
+		Status status = new Status();
+		System.out.println("from check otp frontend "+otp);
+		System.out.println("from send "+this.otp);
+		if(this.otp==otp) {
+			status.setMessage("otp match");
+			status.setStatus(true);
+			System.out.println("match");
+			return status;
+		}
+		else {
+			status.setMessage("mismatch otp");
+			System.out.println("not match");
+			return status;
+		}
+	}
+	
+	
+	@PostMapping("/update-password")
+	public Status updatePassword(@RequestBody Customer customer) {
+		Status status = new Status();
+		System.out.println(customer.getPassword()+"   "+customer.getCustomerId());
+		Customer existingCustomer = customerRepository.fetch(Customer.class, customer.getCustomerId());
+		existingCustomer.setPassword(Base64.getEncoder().encodeToString(customer.getPassword().getBytes()));
+		customerServiceInterface.updateCustomer(existingCustomer);
+		status.setMessage("customer Updated successsfully");
+		status.setStatus(true);
 		return status;
 	}
 	

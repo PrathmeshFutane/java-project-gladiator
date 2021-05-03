@@ -82,6 +82,7 @@ public class OrderController {
 				
 				orderItems.setSubTotalPrice(total);
 				orderItems.setOrder(order);
+				
 				list.add(orderItems);
 				
 				finalTotal = finalTotal + total;
@@ -101,6 +102,7 @@ public class OrderController {
 			}
 			order.setTotalPrice(finalTotal);
 			order.setOrderItems(list);
+			
 			int id = orderServiceInterface.addOrder(order);
 			
 			orderServiceInterface.deleteCart(c.getCartId());

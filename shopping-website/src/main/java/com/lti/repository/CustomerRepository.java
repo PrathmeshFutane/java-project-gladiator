@@ -29,5 +29,8 @@ public class CustomerRepository extends GenericRepository {
 				.createQuery("select c.id from Customer c where c.email = :em")
 				.setParameter("em",email)
 				.getSingleResult();
+	
 	}
+	
+	
 }

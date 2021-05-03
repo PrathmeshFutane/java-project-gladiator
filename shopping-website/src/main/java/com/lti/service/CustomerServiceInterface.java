@@ -15,5 +15,7 @@ public interface CustomerServiceInterface {
 	
 	public Customer updateCustomer(Customer customer);
 	
+	public int checkEmailExist(Customer customer);
+	
 	
 }

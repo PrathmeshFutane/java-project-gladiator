@@ -55,6 +55,18 @@ public class CustomerService  implements CustomerServiceInterface {
 	public Customer updateCustomer(Customer customer){
 		return (Customer) customerRepository.save(customer);
 	}
+
+	public int checkEmailExist(Customer customer) {
+		if(customerRepository.isCustomerPresent(customer.getEmail())) {
+			customer.setPassword(Base64.getEncoder().encodeToString(customer.getPassword().getBytes()));
+			Customer updatedCustomer = (Customer) customerRepository.save(customer);
+			return updatedCustomer.getCustomerId();
+		}
+		else {
+			throw new CustomerServiceException("Customer not found");			
+		}
+	}
+	
 	
 	
 }
